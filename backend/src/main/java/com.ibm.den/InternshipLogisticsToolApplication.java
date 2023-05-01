@@ -2,13 +2,12 @@ package com.ibm.den;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 @SpringBootApplication
-public class InternshipLogisticsToolApplication {
+public class InternshipLogisticsToolApplication{
 
 	public static void main(String[] args) {
-		SpringApplication.run(InternshipLogisticsToolApplication.class, args);
+		SpringApplication.run(com.ibm.den.InternshipLogisticsToolApplication.class, args);
 	}
-		SpringApllication.run(InternshipLogisticsToolApplication.class, args);
+
 }

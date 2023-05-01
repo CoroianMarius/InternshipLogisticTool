@@ -1,31 +1,50 @@
 package com.ibm.den.Classes;
-import javax.persistence.*;
+
+import jakarta.persistence.*;
+import org.springframework.boot.autoconfigure.web.WebProperties;
+
+import javax.annotation.processing.Generated;
+import java.beans.ConstructorProperties;
+import java.util.ArrayList;
 
 @Entity
-@Table(name = "student")
+@Table()
 public class Student
 {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private UUID id;
+    private Long id;
+
+    @Column(nullable = false)
     private String name;
+    @Column(nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "team_id")
     private Team team;
-    private String rol;
+    @Column(nullable = false)
+    private String role;
+    @Column(nullable = false)
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = false)
     private ArrayList<Task> tasks;
 
-    public Student() {}
+    public Student() {
+    }
 
-
-    public Student(String name, Team team, String rol, ArrayList<Task> tasks) {
+    public Student(String name, Team team, String role, ArrayList<Task> tasks) {
         this.name = name;
         this.team = team;
-        this.rol = rol;
+        this.role = role;
         this.tasks = tasks;
     }
 
-    public UUID getId() {
+    public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -44,12 +63,12 @@ public class Student
         this.team = team;
     }
 
-    public String getRol() {
-        return rol;
+    public String getRole() {
+        return role;
     }
 
-    public void setRol(String rol) {
-        this.rol = rol;
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public ArrayList<Task> getTasks() {
@@ -60,13 +79,13 @@ public class Student
         this.tasks = tasks;
     }
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    @Override
+    public String toString() {
         return "Student{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", team=" + team +
-                ", rol='" + rol + '\'' +
+                ", role='" + role + '\'' +
                 ", tasks=" + tasks +
                 '}';
     }
