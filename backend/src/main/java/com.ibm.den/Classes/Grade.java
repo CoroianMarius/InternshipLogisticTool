@@ -5,18 +5,17 @@ import jakarta.persistence.*;
 @Entity
 @Table()
 public class Grade {
+    @EmbeddedId
+    private GradeId id;
 
-    @Id
     @OneToOne
     @JoinColumn(name = "mentor_id")
     private Mentor mentor;
 
-    @Id
     @OneToOne
     @JoinColumn(name = "student_id")
     private Student student;
 
-    @Id
     @OneToOne
     @JoinColumn(name = "task_id")
     private Task task;
@@ -30,6 +29,7 @@ public class Grade {
     public Grade() {}
 
     public Grade(Mentor mentor,Student student,Task task, int value, String comment) {
+        this.id = new GradeId(mentor.getId(),student.getId(),task.getid());
         this.mentor = mentor;
         this.student = student;
         this.task = task;

@@ -19,7 +19,7 @@ public class Student
 
     @Column(nullable = false)
     private String name;
-    @Column(nullable = false)
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "team_id")
     private Team team;

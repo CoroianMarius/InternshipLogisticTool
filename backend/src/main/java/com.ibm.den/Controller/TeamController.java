@@ -2,27 +2,29 @@ package com.ibm.den.Controller;
 
 import com.ibm.den.Classes.Team;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import com.ibm.den.Services.TeamService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
-@Controller("/team")
-public class TeamControler {
+@RestController
+@RequestMapping("/api/team")
+public class TeamController {
 
     @Autowired
-    private final TeamService teamService;
-    
+    TeamService teamService;
+
 
     @GetMapping("")
-    public ArrayList<Team> getTeam() {
-        return  TeamService.getAllTeams();
+    public ArrayList<Team> getTeams()
+    {
+        return teamService.getAllTeams();
     }
 
     @GetMapping("/{id}")
-    public Team getTeamById(@PathVariable Long id) {
-        return  TeamService.getTeam(id);
+    public Team getTeamById(@PathVariable Long id)
+    {
+        return teamService.getTeamById(id);
     }
 
     @PostMapping("")
@@ -32,12 +34,13 @@ public class TeamControler {
 
     @PutMapping("/{id}")
     public Team updateTeam(@PathVariable Long id, @RequestBody Team team) {
-        return  TeamService.updateTeam();
+        return teamService.updateTeam(id, team);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteTeam(@PathVariable Long id) {
-        return  TeamService.deleteTeam();
+    public void deleteTeam(@PathVariable Long id)
+    {
+        teamService.deleteTeam(id);
     }
 
 }

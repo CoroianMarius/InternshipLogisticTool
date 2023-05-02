@@ -14,7 +14,7 @@ public class Team {
     @JoinColumn(name = "leader_id")
     private Student leader;
 
-    @OneToMany(mappedBy = "team")
+    @OneToMany(mappedBy = "team", cascade = CascadeType.ALL, orphanRemoval = false)
     private List<Student> students;
 
     public Team() {

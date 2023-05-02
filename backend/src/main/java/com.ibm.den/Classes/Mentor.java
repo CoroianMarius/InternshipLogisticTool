@@ -5,13 +5,7 @@ import jakarta.persistence.*;
 @Entity
 @Table()
 public class Mentor {
-    @Override
-    public String toString() {
-        return "Mentor{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,7 +23,7 @@ public class Mentor {
         this.name = name;
     }
 
-    public Long getStudentId() {
+    public Long getId() {
         return id;
     }
 
@@ -43,6 +37,14 @@ public class Mentor {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Mentor{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }
 
