@@ -46,7 +46,7 @@ public class GradeService {
         currentGrade.setStudent(grade.getStudent());
         return gradeRepository.save(currentGrade);
     }
-
+//comment for git
     public void deleteGrade(Long mentorId, Long studentId, Long taskId) {
         gradeRepository.deleteById(new GradeId(mentorId, studentId, taskId));
     }
