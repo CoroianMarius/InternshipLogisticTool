@@ -15,6 +15,9 @@ public class Task {
     private Student student;
 
     @Column
+    private boolean attendance;
+
+    @Column
     private String description;
 
     public Task() {
@@ -64,5 +67,13 @@ public class Task {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public boolean isAttendance() {
+        return attendance;
+    }
+
+    public void setAttendance(boolean attendance) {
+        this.attendance = attendance;
     }
 }

@@ -10,4 +10,6 @@ import java.util.ArrayList;
 public interface MentorRepository extends JpaRepository<Mentor, Long> {
     public ArrayList<Mentor> findAll();
 
+    public Mentor findById(long id);
+
 }

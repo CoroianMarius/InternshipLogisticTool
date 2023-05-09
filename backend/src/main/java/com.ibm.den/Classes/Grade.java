@@ -8,16 +8,16 @@ public class Grade {
     @EmbeddedId
     private GradeId id;
 
-    @OneToOne
-    @JoinColumn(name = "mentor_id")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "mentor_id", referencedColumnName = "id")
     private Mentor mentor;
 
-    @OneToOne
-    @JoinColumn(name = "student_id")
+    @OneToOne(fetch = FetchType.LAZY)
+    @Column(insertable = false, updatable = false)
     private Student student;
 
-    @OneToOne
-    @JoinColumn(name = "task_id")
+    @OneToOne(fetch = FetchType.LAZY)
+    @Column(insertable = false, updatable = false)
     private Task task;
     @Column
     private int value;

@@ -10,8 +10,8 @@ public class Team {
     @Id
     private Long id;
 
-    @OneToOne
-    @JoinColumn(name = "leader_id")
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn()
     private Student leader;
 
     @OneToMany(mappedBy = "team", cascade = CascadeType.ALL, orphanRemoval = false)

@@ -24,18 +24,21 @@ public class Student
     @JoinColumn(name = "team_id")
     private Team team;
     @Column(nullable = false)
-    private String role;
+    private boolean leader;
     @Column(nullable = false)
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = false)
     private ArrayList<Task> tasks;
 
+    @Column(nullable = false)
+    private String email;
+
     public Student() {
     }
 
-    public Student(String name, Team team, String role, ArrayList<Task> tasks) {
+    public Student(String name, Team team, Boolean leader, ArrayList<Task> tasks) {
         this.name = name;
         this.team = team;
-        this.role = role;
+        this.leader = leader;
         this.tasks = tasks;
     }
 
@@ -63,12 +66,20 @@ public class Student
         this.team = team;
     }
 
-    public String getRole() {
-        return role;
+    public Boolean getLeader() {
+        return leader;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setLeader(Boolean role) {
+        this.leader = leader;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public ArrayList<Task> getTasks() {
@@ -85,8 +96,10 @@ public class Student
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", team=" + team +
-                ", role='" + role + '\'' +
+                ", role='" + leader + '\'' +
                 ", tasks=" + tasks +
                 '}';
     }
+
+
 }

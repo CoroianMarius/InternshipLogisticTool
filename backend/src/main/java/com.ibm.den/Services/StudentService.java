@@ -20,7 +20,8 @@ public class StudentService {
     public Student updateStudent(Long id, Student student) {
         Student currentStudent = studentRepository.findById(id).orElse(null);
         currentStudent.setName(student.getName());
-        currentStudent.setRole(student.getRole());
+        currentStudent.setEmail(student.getEmail());
+        currentStudent.setLeader(student.getLeader());
         currentStudent.setTeam(student.getTeam());
         currentStudent.setTasks(student.getTasks());
         return studentRepository.save(currentStudent);
