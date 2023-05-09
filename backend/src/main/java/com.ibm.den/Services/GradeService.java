@@ -22,18 +22,32 @@ public class GradeService {
     }
 
 
-    public ArrayList<Grade> getAllGrades(Boolean sorted)
+    public ArrayList<Grade> getAllGrades()
     {
-        ArrayList<Grade> grades = new ArrayList<Grade>();
-        if(sorted)
-            grades=gradeRepository.findAllByValueOrderByValueDesc();
-        else
-            grades=gradeRepository.findAll();
-        return grades;
+        return gradeRepository.findAll();
     }
 
     public Grade findByIdMentorAndIdStudentAndIdTask(Long mentorId, Long studentId, Long taskId)
     {
-        return gradeRepository.findByIdMentorAndIdStudentAndIdTask(mentorId, studentId, taskId);
+        return gradeRepository.findAllByMentor_idAndStudent_idAndTask_Id(mentorId, studentId, taskId);
+    }
+
+    public Grade createGrade(Grade grade) {
+        Grade currentGrade = gradeRepository.save(grade);
+        return currentGrade;
+    }
+
+    public Grade updateGrade(Long mentorId, Long studentId, Long taskId, Grade grade) {
+        Grade currentGrade = gradeRepository.findAllByMentor_idAndStudent_idAndTask_Id(mentorId, studentId, taskId);
+        currentGrade.setComment(grade.getComment());
+        currentGrade.setTask(grade.getTask());
+        currentGrade.setMentor(grade.getMentor());
+        currentGrade.setValue(grade.getValue());
+        currentGrade.setStudent(grade.getStudent());
+        return gradeRepository.save(currentGrade);
+    }
+
+    public void deleteGrade(Long mentorId, Long studentId, Long taskId) {
+        gradeRepository.deleteById(new GradeId(mentorId, studentId, taskId));
     }
 }

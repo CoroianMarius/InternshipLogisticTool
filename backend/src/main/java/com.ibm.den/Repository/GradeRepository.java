@@ -9,9 +9,7 @@ import java.util.ArrayList;
 
 @Repository
 public interface GradeRepository extends JpaRepository<Grade, GradeId> {
-    public ArrayList<Grade> findAllByValueOrderByValueDesc();
-    public Grade findByIdMentorAndIdStudentAndIdTask(Long mentorId, Long studentId, Long taskId);
-
-
     public ArrayList<Grade> findAll();
+    public Grade findAllByMentor_idAndStudent_idAndTask_Id(Long mentorId, Long studentId, Long taskId);
+
 }

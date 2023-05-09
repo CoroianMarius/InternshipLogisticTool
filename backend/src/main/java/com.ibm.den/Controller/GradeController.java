@@ -16,8 +16,8 @@ public class GradeController {
 
     // GET /api/grade
     @GetMapping("")
-    public List<Grade> getAllGrades(Boolean sorted){
-        return gradeService.getAllGrades(sorted);
+    public List<Grade> getAllGrades(){
+        return gradeService.getAllGrades();
     }
 
     // GET /api/grade/{mentor_id}/{student_id}/{task_id}
@@ -27,21 +27,21 @@ public class GradeController {
     }
 
 
-//    // POST /api/grade
-//    @PostMapping("")
-//    public Grade createGrade(@RequestBody Grade grade) {
-//        return gradeService.createGrade(grade);
-//    }
-//
-//    // PUT /api/grade/{mentor_id}/{student_id}/{task_id}
-//    @PutMapping("/{mentor_id}/{student_id}/{task_id}")
-//    public Grade updateGrade(@PathVariable Long mentor_id, @PathVariable Long student_id, @PathVariable Long task_id, @RequestBody Grade grade) {
-//        return gradeService.updateGrade(mentor_id, student_id, task_id, grade);
-//    }
-//
-//    // DELETE /api/grade/{mentor_id}/{student_id}/{task_id}
-//    @DeleteMapping("/{mentor_id}/{student_id}/{task_id}")
-//    public void deleteGrade(@PathVariable Long mentor_id, @PathVariable Long student_id, @PathVariable Long task_id) {
-//        gradeService.deleteGrade(mentor_id, student_id, task_id);
-//    }
+    // POST /api/grade
+    @PostMapping("")
+    public Grade createGrade(@RequestBody Grade grade) {
+        return gradeService.createGrade(grade);
+    }
+
+    // PUT /api/grade/{mentor_id}/{student_id}/{task_id}
+    @PutMapping("/{mentor_id}/{student_id}/{task_id}")
+    public Grade updateGrade(@PathVariable Long mentor_id, @PathVariable Long student_id, @PathVariable Long task_id, @RequestBody Grade grade) {
+        return gradeService.updateGrade(mentor_id, student_id, task_id, grade);
+    }
+
+    // DELETE /api/grade/{mentor_id}/{student_id}/{task_id}
+    @DeleteMapping("/{mentor_id}/{student_id}/{task_id}")
+    public void deleteGrade(@PathVariable Long mentor_id, @PathVariable Long student_id, @PathVariable Long task_id) {
+        gradeService.deleteGrade(mentor_id, student_id, task_id);
+    }
 }
