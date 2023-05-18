@@ -3,21 +3,22 @@ package com.ibm.den.Classes;
 import jakarta.persistence.*;
 
 @Entity
-@Table()
+@Table(name = "grade")
 public class Grade {
-    @EmbeddedId
-    private GradeId id;
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "grade_id")
+    private long id;
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "mentor_id", referencedColumnName = "id")
+    @JoinColumn()
     private Mentor mentor;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @Column(insertable = false, updatable = false)
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn()
     private Student student;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @Column(insertable = false, updatable = false)
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn()
     private Task task;
     @Column
     private int value;
@@ -28,10 +29,8 @@ public class Grade {
 
     public Grade() {}
 
-    public Grade(Mentor mentor,Student student,Task task, int value, String comment) {
-        this.id.setMentor_id(mentor.getId());
-        this.id.setStudent_id(student.getId());
-        this.id.setTask_id(task.getId());
+    public Grade(long id, Mentor mentor, Student student, Task task, int value, String comment) {
+        this.id = id;
         this.mentor = mentor;
         this.student = student;
         this.task = task;
@@ -39,11 +38,12 @@ public class Grade {
         this.comment = comment;
     }
 
-    public GradeId getId() {
+
+    public long getId() {
         return id;
     }
 
-    public void setId(GradeId id) {
+    public void setId(long id) {
         this.id = id;
     }
 

@@ -8,9 +8,8 @@ import java.beans.ConstructorProperties;
 import java.util.ArrayList;
 
 @Entity
-@Table()
-public class Student
-{
+@Table(name = "student")
+public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,17 +19,22 @@ public class Student
     @Column(nullable = false)
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @Column(nullable = false)
+    private String password;
+
+    @ManyToOne
     @JoinColumn(name = "team_id")
     private Team team;
     @Column(nullable = false)
     private boolean leader;
     @Column(nullable = false)
+    //efort in plus
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = false)
     private ArrayList<Task> tasks;
 
     @Column(nullable = false)
     private String email;
+
 
     public Student() {
     }
@@ -80,6 +84,22 @@ public class Student
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public boolean isLeader() {
+        return leader;
+    }
+
+    public void setLeader(boolean leader) {
+        this.leader = leader;
     }
 
     public ArrayList<Task> getTasks() {

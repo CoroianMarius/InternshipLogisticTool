@@ -3,13 +3,13 @@ package com.ibm.den.Classes;
 import jakarta.persistence.*;
 
 @Entity
-@Table()
+@Table(name = "mentor")
 public class Mentor {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "mentor_id")
     private Long id;
 
     @Column(nullable = false)

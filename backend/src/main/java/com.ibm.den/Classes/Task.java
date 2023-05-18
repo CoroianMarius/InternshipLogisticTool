@@ -3,7 +3,7 @@ package com.ibm.den.Classes;
 import jakarta.persistence.*;
 
 @Entity
-@Table()
+@Table(name = "task")
 public class Task {
 
     @Id
@@ -13,7 +13,7 @@ public class Task {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "student_id")
     private Student student;
-
+//timestamps UTC
     @Column
     private boolean attendance;
 

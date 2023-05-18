@@ -4,17 +4,19 @@ import jakarta.persistence.*;
 
 import java.util.List;
 @Entity
-@Table()
+@Table(name = "team")
 public class Team {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "team_id")
     private Long id;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn()
     private Student leader;
 
-    @OneToMany(mappedBy = "team", cascade = CascadeType.ALL, orphanRemoval = false)
+    @OneToMany(mappedBy = "team")
     private List<Student> students;
 
     public Team() {
