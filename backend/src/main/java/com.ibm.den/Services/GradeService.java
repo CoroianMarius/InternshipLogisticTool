@@ -1,7 +1,6 @@
 package com.ibm.den.Services;
 
 import com.ibm.den.Classes.Grade;
-import com.ibm.den.Classes.GradeId;
 import com.ibm.den.Repository.*;
 import jakarta.persistence.Id;
 import org.springframework.stereotype.Service;
@@ -47,7 +46,7 @@ public class GradeService {
         return gradeRepository.save(currentGrade);
     }
 
-    public void deleteGrade(Long mentorId, Long studentId, Long taskId) {
-        gradeRepository.deleteById(new GradeId(mentorId, studentId, taskId));
+    public void deleteGrade(Long id) {
+        gradeRepository.deleteById(id);
     }
 }

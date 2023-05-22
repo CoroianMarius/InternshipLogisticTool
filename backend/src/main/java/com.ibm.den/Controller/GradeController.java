@@ -1,6 +1,5 @@
 package com.ibm.den.Controller;
 
-import com.ibm.den.Classes.GradeId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.ibm.den.Classes.Grade;
@@ -40,8 +39,8 @@ public class GradeController {
     }
 
     // DELETE /api/grade/{mentor_id}/{student_id}/{task_id}
-    @DeleteMapping("/{mentor_id}/{student_id}/{task_id}")
-    public void deleteGrade(@PathVariable Long mentor_id, @PathVariable Long student_id, @PathVariable Long task_id) {
-        gradeService.deleteGrade(mentor_id, student_id, task_id);
+    @DeleteMapping("/{grade_id}")
+    public void deleteGrade(@PathVariable Long grade_id) {
+        gradeService.deleteGrade(grade_id);
     }
 }
