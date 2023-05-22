@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class MenuMentorComponent {
   showFiller = false;
+  selectedComponent: string = '';
+
+  showComponent(componentName: string) {
+    this.selectedComponent = componentName;
+  }
 }

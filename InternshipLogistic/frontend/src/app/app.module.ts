@@ -18,6 +18,13 @@ import { ApplyComponent } from './apply/apply.component';
 import { LoginComponent } from './login/login.component';
 
 import { MenuMentorComponent } from './menu-mentor/menu-mentor.component';
+import {MatTableModule} from "@angular/material/table";
+import { PdfToPngComponent } from './pdf-to-png/pdf-to-png.component';
+import { NavigbarComponent } from './navigbar/navigbar.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { ViewTeamComponent } from './view-team/view-team.component';
+import { AssignTasksComponent } from './assign-tasks/assign-tasks.component';
+import { CreateProjectComponent } from './create-project/create-project.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +33,13 @@ import { MenuMentorComponent } from './menu-mentor/menu-mentor.component';
     RegisterComponent,
     ApplyComponent,
     LoginComponent,
-    MenuMentorComponent
+    MenuMentorComponent,
+    PdfToPngComponent,
+    NavigbarComponent,
+    SidebarComponent,
+    ViewTeamComponent,
+    AssignTasksComponent,
+    CreateProjectComponent
   ],
   imports: [
     BrowserModule,
@@ -43,11 +56,13 @@ import { MenuMentorComponent } from './menu-mentor/menu-mentor.component';
     ReactiveFormsModule,
 
     RouterModule.forRoot([
-      { path: '', component: HomeComponent },
-      { path: 'login', component: LoginComponent },
-      { path: 'apply', component: ApplyComponent },
-      {path: 'mentor',component:MenuMentorComponent},// <-- Add this route
+      {path: '', component: HomeComponent},
+      {path: 'login', component: LoginComponent},
+      {path: 'apply', component: ApplyComponent},
+      {path: 'mentor', component: MenuMentorComponent},
+      {path: 'register', component: RegisterComponent}// <-- Add this route
     ]),
+    MatTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

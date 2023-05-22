@@ -1,75 +1,38 @@
-<mat-toolbar >
-
-
-  <img src="assets/logo.png"alt="Logo" class="logo">
-  <span class="spacer"></span>
-
-
-
-  <span class="spacer"></span>
-
-
-
-
-
-
-
-  <span class="spacer"></span>
-
-
-
-  <span class="spacer"></span>
-  <button mat-icon-button (click)="sidenav.toggle()">
-    <mat-icon>menu</mat-icon>
-  </button>
-
-
-
-
-</mat-toolbar>
-
-
-<mat-sidenav-container>
-  <mat-sidenav #sidenav>
-    <mat-nav-list>
-      <a mat-list-item href="#">Home</a>
-      <a mat-list-item href="#">About</a>
-      <a mat-list-item href="#">Contact</a>
-    </mat-nav-list>
-  </mat-sidenav>
-
-  <mat-sidenav-content>
-    <div class="content">
-      <div class="cardP">
-        <div class="card-border-top">
-        </div>
-        <div class="img" >
-
-        </div>
-        <span> Person</span>
-        <p class="job"> Mentor</p>
+<app-navigbar></app-navigbar>
+<app-sidebar></app-sidebar>
+<main class="main">
+  <div class="right">
+    <div class="container">
+      <div class="card" (click)="showComponent('register')">
+        <span>Register Team</span>
       </div>
-
-      <div class="cards">
-        <div class="card red">
-         <a href="#"><p class="tip">Aprove requests</p></a>
-
-        </div>
-        <div class="card blue">
-          <a href="#"> <p class="tip">Assign tasks</p></a>
-
-        </div>
-        <div class="card green">
-          <a href="#">  <p class="tip">Grade</p></a>
-
-        </div>
+      <div class="card" (click)="showComponent('viewTeam')">
+        <span>View Team</span>
       </div>
-
+      <div class="card" (click)="showComponent('assignTasks')">
+        <span>Assign Tasks</span>
+      </div>
+      <div class="card" (click)="showComponent('createProject')">
+        <span>Create Project</span>
+      </div>
     </div>
-  </mat-sidenav-content>
-</mat-sidenav-container>
-
-
-
+    <br>
+    <br>
+    <div class="chosen">
+      <ng-container *ngIf="selectedComponent === 'register'">
+        <app-register></app-register>
+      </ng-container>
+      <ng-container *ngIf="selectedComponent === 'viewTeam'">
+        <app-view-team></app-view-team>
+      </ng-container>
+      <ng-container *ngIf="selectedComponent === 'assignTasks'">
+        <app-assign-tasks></app-assign-tasks>
+      </ng-container>
+      <ng-container *ngIf="selectedComponent === 'createProject'">
+        <app-create-project></app-create-project>
+      </ng-container>
+    </div>
+  </div>
+</main>
 
 
