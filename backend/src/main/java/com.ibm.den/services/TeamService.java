@@ -1,10 +1,9 @@
-package com.ibm.den.Services;
+package com.ibm.den.services;
 
-import com.ibm.den.Classes.Team;
-import com.ibm.den.Controller.TeamController;
+import com.ibm.den.entities.Team;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.ibm.den.Repository.TeamRepository;
+import com.ibm.den.repository.TeamRepository;
 import java.util.ArrayList;
 
 @Service

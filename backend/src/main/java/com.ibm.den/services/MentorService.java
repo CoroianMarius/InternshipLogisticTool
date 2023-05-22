@@ -1,11 +1,10 @@
-package com.ibm.den.Services;
+package com.ibm.den.services;
 
 import java.util.ArrayList;
 
-import com.ibm.den.Classes.Mentor;
-import com.ibm.den.Repository.MentorRepository;
+import com.ibm.den.entities.Mentor;
+import com.ibm.den.repository.MentorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 @Service

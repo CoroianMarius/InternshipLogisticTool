@@ -1,10 +1,7 @@
-package com.ibm.den.Classes;
+package com.ibm.den.entities;
 
 import jakarta.persistence.*;
-import org.springframework.boot.autoconfigure.web.WebProperties;
 
-import javax.annotation.processing.Generated;
-import java.beans.ConstructorProperties;
 import java.util.ArrayList;
 
 @Entity

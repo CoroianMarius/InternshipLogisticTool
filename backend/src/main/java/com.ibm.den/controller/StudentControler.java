@@ -1,7 +1,7 @@
-package com.ibm.den.Controller;
+package com.ibm.den.controller;
 
-import com.ibm.den.Classes.Student;
-import com.ibm.den.Services.StudentService;
+import com.ibm.den.entities.Student;
+import com.ibm.den.services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,8 +1,7 @@
-package com.ibm.den.Controller;
+package com.ibm.den.controller;
 
-import com.ibm.den.Classes.Task;
-import com.ibm.den.Services.TaskService;
-import org.springframework.stereotype.Controller;
+import com.ibm.den.entities.Task;
+import com.ibm.den.services.TaskService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;

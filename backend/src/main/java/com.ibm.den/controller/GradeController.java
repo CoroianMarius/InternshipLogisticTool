@@ -1,9 +1,9 @@
-package com.ibm.den.Controller;
+package com.ibm.den.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import com.ibm.den.Classes.Grade;
-import com.ibm.den.Services.GradeService;
+import com.ibm.den.entities.Grade;
+import com.ibm.den.services.GradeService;
 
 import java.util.List;
 

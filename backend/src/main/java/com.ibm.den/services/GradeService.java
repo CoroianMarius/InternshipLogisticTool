@@ -1,8 +1,7 @@
-package com.ibm.den.Services;
+package com.ibm.den.services;
 
-import com.ibm.den.Classes.Grade;
-import com.ibm.den.Repository.*;
-import jakarta.persistence.Id;
+import com.ibm.den.entities.Grade;
+import com.ibm.den.repository.*;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

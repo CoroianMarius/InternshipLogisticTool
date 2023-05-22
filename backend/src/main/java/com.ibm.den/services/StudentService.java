@@ -1,7 +1,7 @@
-package com.ibm.den.Services;
+package com.ibm.den.services;
 
-import com.ibm.den.Classes.Student;
-import com.ibm.den.Repository.StudentRepository;
+import com.ibm.den.entities.Student;
+import com.ibm.den.repository.StudentRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

@@ -1,8 +1,8 @@
-package com.ibm.den.Services;
+package com.ibm.den.services;
 
-import com.ibm.den.Classes.Task;
+import com.ibm.den.entities.Task;
 import org.springframework.stereotype.Service;
-import com.ibm.den.Repository.TaskRepository;
+import com.ibm.den.repository.TaskRepository;
 import java.util.ArrayList;
 
 @Service

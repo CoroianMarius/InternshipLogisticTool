@@ -1,8 +1,8 @@
-package com.ibm.den.Controller;
+package com.ibm.den.controller;
 
-import com.ibm.den.Classes.Team;
+import com.ibm.den.entities.Team;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.ibm.den.Services.TeamService;
+import com.ibm.den.services.TeamService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;

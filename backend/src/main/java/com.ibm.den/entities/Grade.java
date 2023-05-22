@@ -1,4 +1,4 @@
-package com.ibm.den.Classes;
+package com.ibm.den.entities;
 
 import jakarta.persistence.*;
 

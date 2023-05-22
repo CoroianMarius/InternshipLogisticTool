@@ -1,7 +1,6 @@
-package com.ibm.den.Repository;
+package com.ibm.den.repository;
 
-import com.ibm.den.Classes.*;
-import jakarta.persistence.Id;
+import com.ibm.den.entities.*;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
