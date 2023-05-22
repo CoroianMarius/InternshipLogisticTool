@@ -25,6 +25,10 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { ViewTeamComponent } from './view-team/view-team.component';
 import { AssignTasksComponent } from './assign-tasks/assign-tasks.component';
 import { CreateProjectComponent } from './create-project/create-project.component';
+import { StudentComponent } from './student/student.component';
+import { MenuStudentComponent } from './menu-student/menu-student.component';
+import { ViewAttendenceComponent } from './view-attendence/view-attendence.component';
+import { ViewGradesComponent } from './view-grades/view-grades.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +43,11 @@ import { CreateProjectComponent } from './create-project/create-project.componen
     SidebarComponent,
     ViewTeamComponent,
     AssignTasksComponent,
-    CreateProjectComponent
+    CreateProjectComponent,
+    StudentComponent,
+    MenuStudentComponent,
+    ViewAttendenceComponent,
+    ViewGradesComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +68,10 @@ import { CreateProjectComponent } from './create-project/create-project.componen
       {path: 'login', component: LoginComponent},
       {path: 'apply', component: ApplyComponent},
       {path: 'mentor', component: MenuMentorComponent},
-      {path: 'register', component: RegisterComponent}// <-- Add this route
+      {path: 'register', component: RegisterComponent},
+      {path: 'student',component:MenuStudentComponent},
+      {path:'selfgrade',component:ViewGradesComponent},
+      {path:'selfattendence',component:ViewAttendenceComponent}// <-- Add this route
     ]),
     MatTableModule,
   ],

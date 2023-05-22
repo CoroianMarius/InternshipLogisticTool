@@ -1,1 +1,7 @@
-<p>view-team works!</p>
+<h2>Team Leaders</h2>
+
+<ng-container *ngFor="let hero of student">
+  <button mat-raised-button *ngIf="hero.status==='teamLeader'" class="name-button">
+    {{hero.name}}
+  </button >
+</ng-container>
