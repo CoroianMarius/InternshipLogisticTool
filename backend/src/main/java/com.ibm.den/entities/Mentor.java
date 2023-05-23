@@ -9,11 +9,14 @@ public class Mentor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "mentor_id")
+    @Column
     private Long id;
 
     @Column(nullable = false)
     private String name;
+
+
+    private String password;
 
     public Mentor() {
     }
@@ -37,6 +40,14 @@ public class Mentor {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
