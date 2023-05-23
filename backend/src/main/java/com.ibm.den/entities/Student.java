@@ -1,5 +1,6 @@
 package com.ibm.den.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -9,18 +10,18 @@ import java.util.ArrayList;
 public class Student {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
     private Long id;
 
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String password;
 
-    @ManyToOne
-    @JoinColumn(name = "team_id")
+    @ManyToOne(cascade=CascadeType.ALL)
+    @JsonBackReference
     private Team team;
     @Column(nullable = false)
     private boolean leader;
@@ -36,11 +37,19 @@ public class Student {
     public Student() {
     }
 
-    public Student(String name, Team team, Boolean leader, ArrayList<Task> tasks) {
+    public Student(String name, Team team, Boolean leader, ArrayList<Task> tasks){
         this.name = name;
         this.team = team;
         this.leader = leader;
         this.tasks = tasks;
+    }
+
+    public Student(Long id, String name, String password, boolean leader, String email) {
+        this.id = id;
+        this.name = name;
+        this.password = password;
+        this.leader = leader;
+        this.email = email;
     }
 
     public Long getId() {
