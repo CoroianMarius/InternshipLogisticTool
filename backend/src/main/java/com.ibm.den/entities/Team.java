@@ -1,5 +1,6 @@
 package com.ibm.den.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -9,46 +10,51 @@ public class Team {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "team_id")
+    @Column
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn()
-    private Student leader;
+    @ManyToOne
+    @JoinColumn(name = "activity_id")
+    private Activity activity;
 
-    @OneToMany(mappedBy = "team")
-    private List<Student> students;
+    @Column
+    private boolean confirmed;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public boolean isConfirmed() {
+        return confirmed;
+    }
+
+    public void setConfirmed(boolean confirmed) {
+        this.confirmed = confirmed;
+    }
+
+
 
     public Team() {
     }
 
-    public Team(Student leader, List<Student> students) {
-        this.leader = leader;
-        this.students = students;
+    public Activity getActivity() {
+        return activity;
     }
 
-    public Student getLeader() {
-        return leader;
-    }
-
-    public void setLeader(Student leader) {
-        this.leader = leader;
-    }
-
-    public List<Student> getStudents() {
-        return students;
-    }
-
-    public void setStudents(List<Student> students) {
-        this.students = students;
+    public void setActivity(Activity activity) {
+        this.activity = activity;
     }
 
     @Override
     public String toString() {
         return "Team{" +
                 "id=" + id +
-                ", leader=" + leader +
-                ", students=" + students +
+                ", leader=" +
+                ", students=" +
                 '}';
     }
 }
