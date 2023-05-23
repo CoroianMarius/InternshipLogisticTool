@@ -42,32 +42,17 @@ public class LoginRegisterService {
 
     public LoginResponse login(LoginRequest a)
     {
-        LoginRequest l = new LoginRequest();
-        l.setEmail(a.getEmail());
-        l.setPassword(a.getPassword());
-        try {
-            Mentor m = mentorRepository.findByNameAndPassword(a.getEmail(), a.getPassword());
-
-            if (m.getPassword().equals(a.getPassword()) && m.getName().equals(a.getEmail()))
-                return LoginResponse.MENTOR;
-        }
-        catch (Exception e){
-
-        }
-        try {
-            Student s = studentRepository.findByEmail(a.getEmail());
-            if(s.getEmail().equals(a.getEmail())){
-                System.out.println(s.getName());
-                if (s.isLeader())
-                    return LoginResponse.LEADER;
-                else
-                    return LoginResponse.STUDENT;
-            }
-        }
-        catch (Exception e){
-
-        }
-        return LoginResponse.NOT_FOUND;
+        Mentor m = mentorRepository.findByNameAndPassword(a.getEmail(), a.getPassword());
+        Student s = studentRepository.findByEmailAndPassword(a.getEmail(), a.getPassword());
+        if(m!=null)
+            return LoginResponse.MENTOR;
+        else if(s!=null)
+            if (s.getLeader())
+                return LoginResponse.LEADER;
+            else
+                return LoginResponse.STUDENT;
+        else
+            return LoginResponse.NOT_FOUND;
     }
 
     public void register(RegisterTeam a)
