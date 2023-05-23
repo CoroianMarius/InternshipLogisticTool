@@ -31,8 +31,6 @@ public class TeamService {
 
     public Team updateTeam(Long id, Team team) {
         Team currentTeam = teamRepository.findById(id).orElse(null);
-        currentTeam.setLeader(team.getLeader());
-        currentTeam.setStudents(team.getStudents());
         teamRepository.save(currentTeam);
         return currentTeam;
     }
