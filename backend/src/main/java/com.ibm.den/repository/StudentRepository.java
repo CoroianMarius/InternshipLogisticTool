@@ -9,4 +9,10 @@ import java.util.ArrayList;
 public interface StudentRepository extends JpaRepository<Student, Long> {
 
     public ArrayList<Student> findAll();
+
+    Student findByEmailAndPassword(String email,String password);
+
+    Student findByNameAndPassword(String email, String password);
+
+    Student findByEmail(String email);
 }
