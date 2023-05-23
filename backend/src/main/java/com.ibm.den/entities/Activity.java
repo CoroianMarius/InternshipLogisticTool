@@ -1,5 +1,6 @@
 package com.ibm.den.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -18,10 +19,12 @@ public class Activity {
     private String name;
 
     @Column
+    @JsonManagedReference
     @OneToMany(mappedBy = "id")
     private List<Task> tasks;
 
     @Column
+    @JsonManagedReference
     @OneToMany(mappedBy = "id")
     private List<Team> teams;
 

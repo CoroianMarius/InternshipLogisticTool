@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class Grade {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "grade_id")
+    @Column
     private long id;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn()

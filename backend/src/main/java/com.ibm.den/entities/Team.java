@@ -1,5 +1,6 @@
 package com.ibm.den.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
@@ -14,11 +15,12 @@ public class Team {
     private Long id;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "activity_id")
     private Activity activity;
 
     @Column
-    private boolean confirmed;
+    private Boolean confirmed;
 
     public Long getId() {
         return id;
@@ -28,11 +30,11 @@ public class Team {
         this.id = id;
     }
 
-    public boolean isConfirmed() {
+    public Boolean isConfirmed() {
         return confirmed;
     }
 
-    public void setConfirmed(boolean confirmed) {
+    public void setConfirmed(Boolean confirmed) {
         this.confirmed = confirmed;
     }
 
