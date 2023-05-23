@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "student")
@@ -27,8 +28,8 @@ public class Student {
     private boolean leader;
     @Column(nullable = false)
     //efort in plus
-    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = false)
-    private ArrayList<Task> tasks;
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = false, fetch = FetchType.LAZY)
+    private List<Task> tasks;
 
     @Column(nullable = false)
     private String email;
@@ -80,7 +81,7 @@ public class Student {
         return leader;
     }
 
-    public void setLeader(Boolean role) {
+    public void setLeader(Boolean leader) {
         this.leader = leader;
     }
 
@@ -100,19 +101,15 @@ public class Student {
         this.password = password;
     }
 
-    public boolean isLeader() {
+    public Boolean isLeader() {
         return leader;
     }
 
-    public void setLeader(boolean leader) {
-        this.leader = leader;
-    }
-
-    public ArrayList<Task> getTasks() {
+    public List<Task> getTasks() {
         return tasks;
     }
 
-    public void setTasks(ArrayList<Task> tasks) {
+    public void setTasks(List<Task> tasks) {
         this.tasks = tasks;
     }
 
