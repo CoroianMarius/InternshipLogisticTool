@@ -23,7 +23,6 @@ public class StudentService {
         currentStudent.setEmail(student.getEmail());
         currentStudent.setLeader(student.getLeader());
         currentStudent.setTeam(student.getTeam());
-        currentStudent.setTasks(student.getTasks());
         return studentRepository.save(currentStudent);
     }
 
