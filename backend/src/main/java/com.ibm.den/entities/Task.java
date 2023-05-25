@@ -13,9 +13,6 @@ public class Task {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "student_id")
     private Student student;
-//timestamps UTC
-    @Column
-    private boolean attendance;
 
     @Column
     private String description;
@@ -28,11 +25,11 @@ public class Task {
         this.description = description;
     }
 
-    public Long getid() {
+    public Long getId() {
         return id;
     }
 
-    public void setid(Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -63,11 +60,5 @@ public class Task {
 
 
 
-    public boolean isAttendance() {
-        return attendance;
-    }
 
-    public void setAttendance(boolean attendance) {
-        this.attendance = attendance;
-    }
 }
