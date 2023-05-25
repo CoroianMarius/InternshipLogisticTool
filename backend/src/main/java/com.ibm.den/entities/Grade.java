@@ -26,7 +26,6 @@ public class Grade {
     @Column
     private String comment;
 
-
     public Grade() {}
 
     public Grade(long id, Mentor mentor, Student student, Task task, int value, String comment) {
