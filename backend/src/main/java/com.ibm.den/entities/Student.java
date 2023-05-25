@@ -27,22 +27,16 @@ public class Student {
     @Column(nullable = false)
     private boolean leader;
     @Column(nullable = false)
-    //efort in plus
-    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = false, fetch = FetchType.LAZY)
-    private List<Task> tasks;
-
-    @Column(nullable = false)
     private String email;
 
 
     public Student() {
     }
 
-    public Student(String name, Team team, Boolean leader, ArrayList<Task> tasks){
+    public Student(String name, Team team, Boolean leader){
         this.name = name;
         this.team = team;
         this.leader = leader;
-        this.tasks = tasks;
     }
 
     public Student(Long id, String name, String password, boolean leader, String email) {
@@ -105,14 +99,6 @@ public class Student {
         return leader;
     }
 
-    public List<Task> getTasks() {
-        return tasks;
-    }
-
-    public void setTasks(List<Task> tasks) {
-        this.tasks = tasks;
-    }
-
     @Override
     public String toString() {
         return "Student{" +
@@ -120,7 +106,6 @@ public class Student {
                 ", name='" + name + '\'' +
                 ", team=" + team +
                 ", role='" + leader + '\'' +
-                ", tasks=" + tasks +
                 '}';
     }
 
