@@ -8,7 +8,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "activity")
-public class Activity {
+public class Activity extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,28 +23,17 @@ public class Activity {
     @OneToMany(mappedBy = "id")
     private List<Task> tasks;
 
-    @Column
-    @JsonManagedReference
-    @OneToMany(mappedBy = "id")
-    private List<Team> teams;
-
     public Activity(String name) {
         this.name = name;
     }
 
-    public Activity(long id, String name, List<Task> tasks, List<Team> teams) {
+    public Activity(long id, String name, List<Task> tasks) {
         this.id = id;
         this.name = name;
         this.tasks = tasks;
-        this.teams = teams;
     }
 
     public Activity() {
-    }
-
-
-    public void addTeam(Team team) {
-        teams.add(team);
     }
 
     public long getId() {
@@ -71,11 +60,4 @@ public class Activity {
         this.tasks = tasks;
     }
 
-    public List<Team> getTeams() {
-        return teams;
-    }
-
-    public void setTeams(List<Team> teams) {
-        this.teams = teams;
-    }
 }

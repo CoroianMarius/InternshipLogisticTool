@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "mentor")
-public class Mentor {
+public class Mentor extends BaseEntity{
 
 
     @Id
