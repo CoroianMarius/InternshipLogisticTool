@@ -38,7 +38,7 @@ public class Grade extends BaseEntity{
     }
 
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

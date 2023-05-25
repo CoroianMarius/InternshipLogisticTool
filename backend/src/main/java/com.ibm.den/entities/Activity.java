@@ -3,7 +3,6 @@ package com.ibm.den.entities;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -36,7 +35,7 @@ public class Activity extends BaseEntity{
     public Activity() {
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
