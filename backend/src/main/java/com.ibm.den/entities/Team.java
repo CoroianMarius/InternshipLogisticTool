@@ -38,8 +38,6 @@ public class Team {
         this.confirmed = confirmed;
     }
 
-
-
     public Team() {
     }
 
@@ -49,14 +47,5 @@ public class Team {
 
     public void setActivity(Activity activity) {
         this.activity = activity;
-    }
-
-    @Override
-    public String toString() {
-        return "Team{" +
-                "id=" + id +
-                ", leader=" +
-                ", students=" +
-                '}';
     }
 }
