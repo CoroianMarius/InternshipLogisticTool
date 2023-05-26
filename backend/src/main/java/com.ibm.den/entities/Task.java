@@ -4,24 +4,21 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "task")
-public class Task extends BaseEntity{
+public class Task extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "student_id")
-    private Student student;
-
+    @Column
+    private String name;
     @Column
     private String description;
 
     public Task() {
     }
 
-    public Task(Student student, String description) {
-        this.student = student;
+    public Task(String description) {
         this.description = description;
     }
 
@@ -31,6 +28,14 @@ public class Task extends BaseEntity{
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Student getStudent() {
@@ -51,14 +56,8 @@ public class Task extends BaseEntity{
 
     @Override
     public String toString() {
-        return "Task{" +
-                "task_id=" + id +
-                ", student=" + student +
-                ", description='" + description + '\'' +
-                '}';
+        return "Task{" + "task_id=" + id + ", student=" + student + ", description='" + description + '\'' + '}';
     }
-
-
 
 
 }
