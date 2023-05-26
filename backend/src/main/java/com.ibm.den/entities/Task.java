@@ -38,14 +38,6 @@ public class Task extends BaseEntity {
         this.name = name;
     }
 
-    public Student getStudent() {
-        return student;
-    }
-
-    public void setStudent(Student student) {
-        this.student = student;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -56,7 +48,7 @@ public class Task extends BaseEntity {
 
     @Override
     public String toString() {
-        return "Task{" + "task_id=" + id + ", student=" + student + ", description='" + description + '\'' + '}';
+        return "Task{" + "task_id=" + id + ", description='" + description + '\'' + '}';
     }
 
 

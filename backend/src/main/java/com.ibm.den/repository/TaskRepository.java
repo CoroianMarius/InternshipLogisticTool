@@ -8,4 +8,6 @@ import java.util.ArrayList;
 @Repository
 public interface TaskRepository extends JpaRepository<Task, Long> {
     public ArrayList<Task> findAll();
+
+    Task findByName(String taskName);
 }

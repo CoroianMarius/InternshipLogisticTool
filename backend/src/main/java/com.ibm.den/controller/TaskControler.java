@@ -1,5 +1,6 @@
 package com.ibm.den.controller;
 
+import com.ibm.den.dto.TaskDto;
 import com.ibm.den.entities.Task;
 import com.ibm.den.services.TaskService;
 import org.springframework.web.bind.annotation.*;
@@ -26,14 +27,9 @@ public class TaskControler {
         return taskService.getTaskById(id);
     }
 
-    @PostMapping
-    public Task createTask(@RequestBody Task task) {
-        return taskService.createTask(task);
-    }
-
-    @PutMapping("/{id}")
-    public Task updateTask(@PathVariable Long id,@RequestBody Task task) {
-        return taskService.updateTask(id, task);
+    @PostMapping("/{ActivityName}")
+    public TaskDto createTask(@RequestBody TaskDto task, @PathVariable String ActivityName) {
+        return taskService.createTask(task, ActivityName);
     }
 
     @DeleteMapping("/{id}")
