@@ -1,5 +1,6 @@
 package com.ibm.den.services;
 
+import com.ibm.den.dto.StudentDto;
 import com.ibm.den.entities.Student;
 import com.ibm.den.repository.StudentRepository;
 import org.springframework.stereotype.Service;
@@ -13,8 +14,8 @@ public class StudentService {
     public StudentService(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
     }
-    public void deleteStudent(Long id) {
-        studentRepository.deleteById(id);
+    public void deleteStudent(String email) {
+        studentRepository.deleteByEmail(email);
     }
 
     public Student updateStudent(Long id, Student student) {
@@ -26,9 +27,15 @@ public class StudentService {
         return studentRepository.save(currentStudent);
     }
 
-    public Student createStudent(Student student) {
-        Student currentStudent = studentRepository.save(student);
-        return currentStudent;
+    public StudentDto createStudent(StudentDto student,String email) {
+        Student leader = studentRepository.findByEmail(email);
+        Student currentStudent = new Student();
+        currentStudent.setName(student.getName());
+        currentStudent.setEmail(student.getEmail());
+        currentStudent.setLeader(student.getLeader());
+        currentStudent.setTeam(leader.getTeam());
+        studentRepository.save(currentStudent);
+        return new StudentDto(currentStudent);
     }
 
     public Student getStudentById(Long id) {
@@ -37,5 +44,14 @@ public class StudentService {
 
     public ArrayList<Student> getAllStudents() {
         return (ArrayList<Student>) studentRepository.findAll();
+    }
+
+    public ArrayList<StudentDto> getLeaders() {
+        ArrayList<Student> students = studentRepository.findByLeader(true);
+        ArrayList<StudentDto> studentDtos = new ArrayList<>();
+        for (Student student : students) {
+            studentDtos.add(new StudentDto(student));
+        }
+        return studentDtos;
     }
 }

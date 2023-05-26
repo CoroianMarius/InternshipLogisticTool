@@ -1,5 +1,6 @@
 package com.ibm.den.controller;
 
+import com.ibm.den.dto.StudentDto;
 import com.ibm.den.entities.Student;
 import com.ibm.den.services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +29,14 @@ public class StudentControler {
         return studentService.getStudentById(id);
     }
 
-    @PostMapping("")
-    public Student createStudent(@RequestBody Student student) {
-        return studentService.createStudent(student);
+    @GetMapping("/leaders")
+    public ArrayList<StudentDto> getLeaders() {
+        return studentService.getLeaders();
+    }
+
+    @PostMapping("{email}")
+    public StudentDto createStudent(@RequestBody StudentDto student,@PathVariable String email) {
+        return studentService.createStudent(student,email);
     }
 
     @PutMapping("/{id}")
@@ -38,9 +44,9 @@ public class StudentControler {
         return studentService.updateStudent(id, student);
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteStudent(@PathVariable Long id) {
-        studentService.deleteStudent(id);
+    @DeleteMapping("/{email}")
+    public void deleteStudent(@PathVariable String email) {
+        studentService.deleteStudent(email);
     }
 
 
