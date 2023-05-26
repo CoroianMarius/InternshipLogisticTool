@@ -25,4 +25,20 @@ public class TeamDto {
             this.students.add(new StudentDto(student));
         }
     }
+
+    public String getActivityName() {
+        return activityName;
+    }
+
+    public void setActivityName(String activityName) {
+        this.activityName = activityName;
+    }
+
+    public List<StudentDto> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<StudentDto> students) {
+        this.students = students;
+    }
 }

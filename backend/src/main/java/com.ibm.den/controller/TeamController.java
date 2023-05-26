@@ -1,5 +1,6 @@
 package com.ibm.den.controller;
 
+import com.ibm.den.dto.TeamDto;
 import com.ibm.den.entities.Team;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.ibm.den.services.TeamService;
@@ -19,6 +20,12 @@ public class TeamController {
     public ArrayList<Team> getTeams()
     {
         return teamService.getAllTeams();
+    }
+
+    @GetMapping("/{email}")
+    public TeamDto getTeam(@PathVariable String email)
+    {
+        return teamService.getTeam(email);
     }
 
     @GetMapping("/{id}")
