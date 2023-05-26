@@ -1,5 +1,6 @@
 package com.ibm.den.dto;
 
+import com.ibm.den.entities.Grade;
 import com.ibm.den.entities.Mentor;
 import com.ibm.den.entities.Student;
 import com.ibm.den.entities.Task;
@@ -8,60 +9,61 @@ import java.util.Objects;
 
 public class GradeDto
 {
-    private long id;
-    private Mentor mentor;
-    private Student student;
-    private Task task;
-    private int value;
+    private String email;
+    private String mentor;
+    private String task;
+    private Integer grade;
     private String comment;
 
-    public GradeDto(long id, Mentor mentor, Student student, Task task, int value, String comment) {
-        this.id = id;
+    public GradeDto() {
+    }
+
+    public GradeDto(String email, String mentor, String task, Integer grade, String comment) {
+        this.email = email;
         this.mentor = mentor;
-        this.student = student;
         this.task = task;
-        this.value = value;
+        this.grade = grade;
         this.comment = comment;
     }
 
-    public long getId() {
-        return id;
+    public GradeDto(Grade grade) {
+        this.email = grade.getStudent().getEmail();
+        this.mentor = grade.getMentor().getName();
+        this.task = grade.getTask().getName();
+        this.grade = grade.getValue();
+        this.comment = grade.getComment();
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public String getEmail() {
+        return email;
     }
 
-    public Mentor getMentor() {
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+     public String getMentor() {
         return mentor;
     }
 
-    public void setMentor(Mentor mentor) {
+    public void setMentor(String mentor) {
         this.mentor = mentor;
     }
 
-    public Student getStudent() {
-        return student;
-    }
-
-    public void setStudent(Student student) {
-        this.student = student;
-    }
-
-    public Task getTask() {
+    public String getTask() {
         return task;
     }
 
-    public void setTask(Task task) {
+    public void setTask(String task) {
         this.task = task;
     }
 
-    public int getValue() {
-        return value;
+    public Integer getGrade() {
+        return grade;
     }
 
-    public void setValue(int value) {
-        this.value = value;
+    public void setGrade(Integer grade) {
+        this.grade = grade;
     }
 
     public String getComment() {
@@ -71,28 +73,5 @@ public class GradeDto
     public void setComment(String comment) {
         this.comment = comment;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof GradeDto gradeDto)) return false;
-        return getId() == gradeDto.getId() && getValue() == gradeDto.getValue() && Objects.equals(getMentor(), gradeDto.getMentor()) && Objects.equals(getStudent(), gradeDto.getStudent()) && Objects.equals(getTask(), gradeDto.getTask()) && Objects.equals(getComment(), gradeDto.getComment());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId(), getMentor(), getStudent(), getTask(), getValue(), getComment());
-    }
-
-    @Override
-    public String toString() {
-        return "GradeDto{" +
-                "id=" + id +
-                ", mentor=" + mentor +
-                ", student=" + student +
-                ", task=" + task +
-                ", value=" + value +
-                ", comment='" + comment + '\'' +
-                '}';
-    }
 }
+
