@@ -23,10 +23,6 @@ public class RegisterAndLoginController {
         loginRegisterService.register(a);
     }
 
-    @GetMapping("/login")
-    public ArrayList<Activity> activities(){
-        return loginRegisterService.activities();
-    }
     @PostMapping("/login")
     public LoginResponse login(@RequestBody LoginRequest a){
         return loginRegisterService.login(a);
