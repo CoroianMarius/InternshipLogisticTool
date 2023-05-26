@@ -11,4 +11,5 @@ public interface GradeRepository extends JpaRepository<Grade, Long> {
     public ArrayList<Grade> findAll();
     public Grade findAllByMentor_idAndStudent_idAndTask_Id(Long mentorId, Long studentId, Long taskId);
 
+    ArrayList<Grade> findByStudent(Student student);
 }

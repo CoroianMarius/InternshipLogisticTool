@@ -1,6 +1,8 @@
 package com.ibm.den.services;
 
+import com.ibm.den.dto.GradeDto;
 import com.ibm.den.entities.Grade;
+import com.ibm.den.entities.Student;
 import com.ibm.den.repository.*;
 import org.springframework.stereotype.Service;
 
@@ -47,5 +49,25 @@ public class GradeService {
 
     public void deleteGrade(Long id) {
         gradeRepository.deleteById(id);
+    }
+
+    public ArrayList<GradeDto> getGrades(String email) {
+        Student student = studentRepository.findByEmail(email);
+        ArrayList<Grade> grades = gradeRepository.findByStudent(student);
+        ArrayList<GradeDto> gradeDtos = new ArrayList<>();
+        for (Grade grade : grades) {
+            gradeDtos.add(new GradeDto(grade));
+        }
+        return gradeDtos;
+    }
+
+    public ArrayList<ArrayList<GradeDto>> getGradesList(String email) {
+        Student student = studentRepository.findByEmail(email);
+        ArrayList<Student> students = studentRepository.findByTeam(student.getTeam());
+        ArrayList<ArrayList<GradeDto>> gradeDtos = new ArrayList<>();
+        for (Student student1 : students) {
+            gradeDtos.add(getGrades(student1.getEmail()));
+        }
+        return gradeDtos;
     }
 }

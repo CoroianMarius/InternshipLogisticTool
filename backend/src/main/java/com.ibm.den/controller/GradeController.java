@@ -1,10 +1,12 @@
 package com.ibm.den.controller;
 
+import com.ibm.den.dto.GradeDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.ibm.den.entities.Grade;
 import com.ibm.den.services.GradeService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -20,9 +22,14 @@ public class GradeController {
     }
 
     // GET /api/grade/{mentor_id}/{student_id}/{task_id}
-    @GetMapping("/{mentor_id}/{student_id}/{task_id}")
-    public Grade getGradeById(@PathVariable Long mentor_id, @PathVariable Long student_id, @PathVariable Long task_id) {
-        return gradeService.findByIdMentorAndIdStudentAndIdTask(mentor_id, student_id, task_id);
+    @GetMapping("/{email}")
+    public ArrayList<GradeDto> getGrades(@PathVariable String email) {
+        return gradeService.getGrades(email);
+    }
+
+    @GetMapping("/list{email}")
+    public ArrayList<ArrayList<GradeDto>> getGradesList(@PathVariable String email) {
+        return gradeService.getGradesList(email);
     }
 
 
