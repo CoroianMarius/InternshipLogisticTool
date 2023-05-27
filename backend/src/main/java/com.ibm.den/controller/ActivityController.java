@@ -24,7 +24,7 @@ public class ActivityController {
     }
 
     @PostMapping("")
-    public ActivityDto createActivity(@PathVariable ActivityDto activity){
+    public ActivityDto createActivity(@RequestBody ActivityDto activity){
         return activityService.createActivity(activity);
     }
 
