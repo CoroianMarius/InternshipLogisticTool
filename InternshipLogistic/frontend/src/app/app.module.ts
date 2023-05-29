@@ -32,6 +32,7 @@ import { ViewGradesComponent } from './view-grades/view-grades.component';
 import {HttpClientModule} from "@angular/common/http";
 import { MenuLeaderComponent } from './menu-leader/menu-leader.component';
 import { DialogCreateComponent } from './dialog-create/dialog-create.component';
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -54,34 +55,35 @@ import { DialogCreateComponent } from './dialog-create/dialog-create.component';
     MenuLeaderComponent,
     DialogCreateComponent
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatButtonModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatListModule,
-    MatMenuModule,
-    MatFormFieldModule,
-    MatInputModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        MatButtonModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatSidenavModule,
+        MatListModule,
+        MatMenuModule,
+        MatFormFieldModule,
+        MatInputModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
 
-    RouterModule.forRoot([
-      {path: '', component: HomeComponent},
-      {path: 'login', component: LoginComponent},
-      {path: 'apply', component: ApplyComponent},
-      {path: 'mentor', component: MenuMentorComponent},
-      {path: 'register', component: RegisterComponent},
-      {path: 'student',component:MenuStudentComponent},
-      {path:'selfgrade',component:ViewGradesComponent},
-      {path:'selfattendence',component:ViewAttendenceComponent},
-      {path:'leader',component:MenuLeaderComponent}// <-- Add this route
-    ]),
-    MatTableModule,
-  ],
+        RouterModule.forRoot([
+            {path: '', component: HomeComponent},
+            {path: 'login', component: LoginComponent},
+            {path: 'apply', component: ApplyComponent},
+            {path: 'mentor', component: MenuMentorComponent},
+            {path: 'register', component: RegisterComponent},
+            {path: 'student', component: MenuStudentComponent},
+            {path: 'selfgrade', component: ViewGradesComponent},
+            {path: 'selfattendence', component: ViewAttendenceComponent},
+            {path: 'leader', component: MenuLeaderComponent}// <-- Add this route
+        ]),
+        MatTableModule,
+        MatSelectModule,
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
