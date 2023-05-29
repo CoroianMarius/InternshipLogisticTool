@@ -33,6 +33,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { MenuLeaderComponent } from './menu-leader/menu-leader.component';
 import { DialogCreateComponent } from './dialog-create/dialog-create.component';
 import {MatSelectModule} from "@angular/material/select";
+import { PersonDisplayComponent } from './person-display/person-display.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import {MatSelectModule} from "@angular/material/select";
     ViewAttendenceComponent,
     ViewGradesComponent,
     MenuLeaderComponent,
-    DialogCreateComponent
+    DialogCreateComponent,
+    PersonDisplayComponent
   ],
     imports: [
         BrowserModule,

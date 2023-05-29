@@ -44,7 +44,7 @@
 }
 
 .container:hover .card {
-  filter: blur(3px);
+  filter: blur(1px);
   opacity: .5;
   transform: scale(.98);
   box-shadow: none;
