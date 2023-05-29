@@ -9,7 +9,7 @@ import java.util.Objects;
 
 public class ActivityDto {
 private String name;
-private ArrayList<TaskDto> tasks;
+private ArrayList<TaskDto> tasks = new ArrayList<>();
 
     public ActivityDto() {
     }

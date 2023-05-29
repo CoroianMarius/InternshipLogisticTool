@@ -9,7 +9,7 @@ import java.util.Objects;
 
 public class TeamDto {
     private String activityName;
-    private List<StudentDto> students;
+    private List<StudentDto> students = new ArrayList<>();
 
     public TeamDto() {
     }
