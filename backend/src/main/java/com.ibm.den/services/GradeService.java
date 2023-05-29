@@ -16,7 +16,7 @@ public class GradeService {
     private final StudentRepository studentRepository;
     private final MentorRepository mentorRepository;
     private final TaskRepository taskRepository;
-    public GradeService(GradeRepository gradeRepository, StudentRepository studentRepository, MentorRepository mentorRepository, TaskRepository taskRepository
+    public GradeService(GradeRepository gradeRepository, StudentRepository studentRepository, MentorRepository mentorRepository, TaskRepository taskRepository)
     {
         this.gradeRepository=gradeRepository;
         this.studentRepository=studentRepository;
