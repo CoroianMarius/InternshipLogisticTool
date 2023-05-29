@@ -15,10 +15,13 @@ public class TaskService {
     private final TaskRepository taskRepository;
     @Autowired
     private final ActivityRepository activityRepository;
+    @Autowired
+    private final AttendanceService attendanceService;
 
-    public TaskService(TaskRepository taskRepository, ActivityRepository activityRepository) {
+    public TaskService(TaskRepository taskRepository, ActivityRepository activityRepository, AttendanceService attendanceService) {
         this.taskRepository = taskRepository;
         this.activityRepository = activityRepository;
+        this.attendanceService = attendanceService;
     }
 
     public ArrayList<Task> getAllTasks() {
@@ -40,6 +43,11 @@ public class TaskService {
         return new TaskDto(currentTask);
     }
 
+    public void assignTask(ArrayList<String> studentsEmail, String taskName) {
+        for (String student : studentsEmail) {
+            attendanceService.createAttendance(student, taskName);
+        }
+    }
 
     public void deleteTask(Long id) {
         taskRepository.deleteById(id);

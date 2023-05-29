@@ -32,6 +32,11 @@ public class TaskControler {
         return taskService.createTask(task, ActivityName);
     }
 
+    @PostMapping("assignTask/{taskName}")
+    public void assignTask(@RequestBody ArrayList<String> studentEmails, @PathVariable String taskName) {
+        taskService.assignTask(studentEmails, taskName);
+    }
+
     @DeleteMapping("/{id}")
     public void deleteTask(@PathVariable Long id) {
         taskService.deleteTask(id);
