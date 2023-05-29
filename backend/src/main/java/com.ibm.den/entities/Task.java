@@ -22,6 +22,11 @@ public class Task extends BaseEntity {
         this.description = description;
     }
 
+    public Task(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
     public Long getId() {
         return id;
     }
