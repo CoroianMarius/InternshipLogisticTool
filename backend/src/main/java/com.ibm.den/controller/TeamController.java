@@ -7,7 +7,7 @@ import com.ibm.den.services.TeamService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-@CrossOrigin(origins = "http://localhost:56903")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/team")
 public class TeamController {
