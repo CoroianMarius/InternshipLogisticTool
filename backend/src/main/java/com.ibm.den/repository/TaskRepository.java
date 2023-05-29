@@ -1,13 +1,13 @@
-package com.ibm.den.Repository;
-import com.ibm.den.Classes.*;
-import jakarta.persistence.Id;
+package com.ibm.den.repository;
+import com.ibm.den.entities.*;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 @Repository
 public interface TaskRepository extends JpaRepository<Task, Long> {
     public ArrayList<Task> findAll();
+
+    Task findByName(String taskName);
 }

@@ -1,12 +1,12 @@
-package com.ibm.den.Controller;
+package com.ibm.den.controller;
 
-import com.ibm.den.Classes.Mentor;
-import com.ibm.den.Services.MentorService;
+import com.ibm.den.entities.Mentor;
+import com.ibm.den.services.MentorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin(origins = "http://localhost:56903")
 @RestController
 @RequestMapping("/api/mentor")
 public class MentorControler {

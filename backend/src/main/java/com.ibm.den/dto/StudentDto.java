@@ -7,7 +7,7 @@ import com.ibm.den.entities.Team;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class StudentDto {
+public class  StudentDto {
     private String name;
     private String email;
     private Boolean leader;

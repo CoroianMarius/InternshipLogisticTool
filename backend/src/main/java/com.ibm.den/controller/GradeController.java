@@ -1,13 +1,14 @@
-package com.ibm.den.Controller;
+package com.ibm.den.controller;
 
-import com.ibm.den.Classes.GradeId;
+import com.ibm.den.dto.GradeDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import com.ibm.den.Classes.Grade;
-import com.ibm.den.Services.GradeService;
+import com.ibm.den.entities.Grade;
+import com.ibm.den.services.GradeService;
 
+import java.util.ArrayList;
 import java.util.List;
-
+@CrossOrigin(origins = "http://localhost:56903")
 @RestController
 @RequestMapping("/api/grade")
 public class GradeController {
@@ -16,32 +17,37 @@ public class GradeController {
 
     // GET /api/grade
     @GetMapping("")
-    public List<Grade> getAllGrades(Boolean sorted){
-        return gradeService.getAllGrades(sorted);
+    public List<Grade> getAllGrades(){
+        return gradeService.getAllGrades();
     }
 
     // GET /api/grade/{mentor_id}/{student_id}/{task_id}
-    @GetMapping("/{mentor_id}/{student_id}/{task_id}")
-    public Grade getGradeById(@PathVariable Long mentor_id, @PathVariable Long student_id, @PathVariable Long task_id) {
-        return gradeService.findByIdMentorAndIdStudentAndIdTask(mentor_id, student_id, task_id);
+    @GetMapping("/{email}")
+    public ArrayList<GradeDto> getGrades(@PathVariable String email) {
+        return gradeService.getGrades(email);
+    }
+
+    @GetMapping("/list{email}")
+    public ArrayList<ArrayList<GradeDto>> getGradesList(@PathVariable String email) {
+        return gradeService.getGradesList(email);
     }
 
 
-//    // POST /api/grade
-//    @PostMapping("")
-//    public Grade createGrade(@RequestBody Grade grade) {
-//        return gradeService.createGrade(grade);
-//    }
-//
-//    // PUT /api/grade/{mentor_id}/{student_id}/{task_id}
-//    @PutMapping("/{mentor_id}/{student_id}/{task_id}")
-//    public Grade updateGrade(@PathVariable Long mentor_id, @PathVariable Long student_id, @PathVariable Long task_id, @RequestBody Grade grade) {
-//        return gradeService.updateGrade(mentor_id, student_id, task_id, grade);
-//    }
-//
-//    // DELETE /api/grade/{mentor_id}/{student_id}/{task_id}
-//    @DeleteMapping("/{mentor_id}/{student_id}/{task_id}")
-//    public void deleteGrade(@PathVariable Long mentor_id, @PathVariable Long student_id, @PathVariable Long task_id) {
-//        gradeService.deleteGrade(mentor_id, student_id, task_id);
-//    }
+    // POST /api/grade
+    @PostMapping("")
+    public Grade createGrade(@RequestBody Grade grade) {
+        return gradeService.createGrade(grade);
+    }
+
+    // PUT /api/grade/{mentor_id}/{student_id}/{task_id}
+    @PutMapping("/{mentor_id}/{student_id}/{task_id}")
+    public Grade updateGrade(@PathVariable Long mentor_id, @PathVariable Long student_id, @PathVariable Long task_id, @RequestBody Grade grade) {
+        return gradeService.updateGrade(mentor_id, student_id, task_id, grade);
+    }
+
+    // DELETE /api/grade/{mentor_id}/{student_id}/{task_id}
+    @DeleteMapping("/{grade_id}")
+    public void deleteGrade(@PathVariable Long grade_id) {
+        gradeService.deleteGrade(grade_id);
+    }
 }

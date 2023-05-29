@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-
+@CrossOrigin(origins = "http://localhost:56903")
 @RestController
 @RequestMapping("/api")
 public class RegisterAndLoginController {

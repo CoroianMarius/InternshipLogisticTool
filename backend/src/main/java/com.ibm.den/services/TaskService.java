@@ -1,17 +1,24 @@
-package com.ibm.den.Services;
+package com.ibm.den.services;
 
-import com.ibm.den.Classes.Task;
+import com.ibm.den.dto.TaskDto;
+import com.ibm.den.entities.Activity;
+import com.ibm.den.entities.Task;
+import com.ibm.den.repository.ActivityRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.ibm.den.Repository.TaskRepository;
+import com.ibm.den.repository.TaskRepository;
 import java.util.ArrayList;
 
 @Service
 public class TaskService {
-
+    @Autowired
     private final TaskRepository taskRepository;
+    @Autowired
+    private final ActivityRepository activityRepository;
 
-    public TaskService(TaskRepository taskRepository) {
+    public TaskService(TaskRepository taskRepository, ActivityRepository activityRepository) {
         this.taskRepository = taskRepository;
+        this.activityRepository = activityRepository;
     }
 
     public ArrayList<Task> getAllTasks() {
@@ -22,17 +29,17 @@ public class TaskService {
         return taskRepository.findById(id).orElse(null);
     }
 
-    public Task createTask(Task task) {
-        Task currentTask = taskRepository.save(task);
-        return currentTask;
+    public TaskDto createTask(TaskDto task, String ActivityName) {
+        Task currentTask = new Task();
+        currentTask.setName(task.getName());
+        currentTask.setDescription(task.getDescription());
+        Activity activity = activityRepository.findByName(ActivityName);
+        activity.getTasks().add(currentTask);
+        activityRepository.save(activity);
+        taskRepository.save(currentTask);
+        return new TaskDto(currentTask);
     }
 
-    public Task updateTask(Long id, Task task) {
-        Task currentTask = taskRepository.findById(id).orElse(null);
-        currentTask.setDescription(task.getDescription());
-        currentTask.setStudent(task.getStudent());
-        return taskRepository.save(currentTask);
-    }
 
     public void deleteTask(Long id) {
         taskRepository.deleteById(id);
