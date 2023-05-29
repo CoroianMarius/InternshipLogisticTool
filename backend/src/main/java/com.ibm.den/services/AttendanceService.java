@@ -3,6 +3,7 @@ package com.ibm.den.services;
 import com.ibm.den.dto.AttendanceDto;
 import com.ibm.den.dto.TaskDto;
 import com.ibm.den.entities.Attendance;
+import com.ibm.den.entities.Grade;
 import com.ibm.den.entities.Student;
 import com.ibm.den.entities.Task;
 import com.ibm.den.repository.AttendanceRepository;
@@ -54,7 +55,8 @@ public class AttendanceService {
         Attendance attendance = new Attendance();                                               //create the attendance
         attendance.setStudent(student);
         attendance.setTask(task);
-        attendanceRepository.save(attendance);                                                  //save the attendance
+        attendanceRepository.save(attendance);
+
         return new AttendanceDto(attendance);
     }
 }

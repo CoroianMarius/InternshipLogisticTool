@@ -19,11 +19,13 @@ public class RegisterAndLoginController {
         this.loginRegisterService = loginRegisterService;
     }
     @PostMapping("/register")
+    //check RegisterTeam.java for struct
     public void register(@RequestBody RegisterTeam a) {
         loginRegisterService.register(a);
     }
 
     @PostMapping("/login")
+    //Returns the enum : LEADER, STUDENT, etc. Check LoginResponse.java for struct
     public LoginResponse login(@RequestBody LoginRequest a){
         return loginRegisterService.login(a);
     }

@@ -17,31 +17,17 @@ public class TaskControler {
         this.taskService = taskService;
     }
 
-    @GetMapping("")
-    public ArrayList<Task> getTasks() {
-        return taskService.getAllTasks();
-    }
-
-    @GetMapping("/{id}")
-    public Task getTaskById(@PathVariable Long id) {
-        return taskService.getTaskById(id);
-    }
-
     @PostMapping("/{ActivityName}")
+    //Creates a new task. Remember to send the activity name in the path
     public TaskDto createTask(@RequestBody TaskDto task, @PathVariable String ActivityName) {
         return taskService.createTask(task, ActivityName);
     }
 
     @PostMapping("assignTask/{taskName}")
+    //Assigns a task to a list of students. Remember to send the task name in the path
     public void assignTask(@RequestBody ArrayList<String> studentEmails, @PathVariable String taskName) {
         taskService.assignTask(studentEmails, taskName);
     }
-
-    @DeleteMapping("/{id}")
-    public void deleteTask(@PathVariable Long id) {
-        taskService.deleteTask(id);
-    }
-
 
 
 }

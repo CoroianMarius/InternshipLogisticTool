@@ -23,34 +23,22 @@ public class  StudentControler {
         this.studentService = studentService;
     }
 
-    @GetMapping("")
-    public ArrayList<Student> getAllStudents() {
-        return studentService.getAllStudents();
-    }
-
-    @GetMapping("/{id}")
-    public Student getStudentById(@PathVariable Long id) {
-        return studentService.getStudentById(id);
-    }
-
     @GetMapping("/leaders")
+    //returns all the leaders
     public ArrayList<StudentDto> getLeaders() {
         return studentService.getLeaders();
     }
 
-    @PostMapping("{email}")
-    public StudentDto createStudent(@RequestBody StudentDto student,@PathVariable String email) {
-        return studentService.createStudent(student,email);
+    @PostMapping("{emailLeader}")
+    //creates new student, you pass the email of his team leader
+    public StudentDto createStudent(@RequestBody StudentDto student,@PathVariable String emailLeader) {
+        return studentService.createStudent(student,emailLeader);
     }
 
-    @PutMapping("/{id}")
-    public Student updateStudent(@PathVariable Long id, @RequestBody Student student) {
-        return studentService.updateStudent(id, student);
-    }
-
-    @DeleteMapping("/{email}")
-    public void deleteStudent(@PathVariable String email) {
-        studentService.deleteStudent(email);
+    @DeleteMapping("/{emailStudent}")
+    //you got this bro
+    public void deleteStudent(@PathVariable String emailStudent) {
+        studentService.deleteStudent(emailStudent);
     }
 
 

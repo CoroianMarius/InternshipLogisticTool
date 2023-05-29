@@ -2,7 +2,9 @@ package com.ibm.den.services;
 
 import com.ibm.den.dto.GradeDto;
 import com.ibm.den.entities.Grade;
+import com.ibm.den.entities.Mentor;
 import com.ibm.den.entities.Student;
+import com.ibm.den.entities.Task;
 import com.ibm.den.repository.*;
 import org.springframework.stereotype.Service;
 
@@ -13,12 +15,13 @@ public class GradeService {
     private final GradeRepository gradeRepository;
     private final StudentRepository studentRepository;
     private final MentorRepository mentorRepository;
-
-    public GradeService(GradeRepository gradeRepository, StudentRepository studentRepository, MentorRepository mentorRepository)
+    private final TaskRepository taskRepository;
+    public GradeService(GradeRepository gradeRepository, StudentRepository studentRepository, MentorRepository mentorRepository, TaskRepository taskRepository
     {
         this.gradeRepository=gradeRepository;
         this.studentRepository=studentRepository;
         this.mentorRepository=mentorRepository;
+        this.taskRepository=taskRepository;
     }
 
 
@@ -32,9 +35,19 @@ public class GradeService {
         return gradeRepository.findAllByMentor_idAndStudent_idAndTask_Id(mentorId, studentId, taskId);
     }
 
-    public Grade createGrade(Grade grade) {
-        Grade currentGrade = gradeRepository.save(grade);
-        return currentGrade;
+    public GradeDto createGrade(GradeDto gradeDto) {
+        Grade grade = new Grade();
+        grade.setComment(gradeDto.getComment());
+        Task task = taskRepository.findByName(gradeDto.getTask());
+        Student student = studentRepository.findByEmail(gradeDto.getEmail());
+        Mentor mentor = mentorRepository.findByName(gradeDto.getMentor());
+        grade.setTask(task);
+        grade.setStudent(student);
+        grade.setMentor(mentor);
+        grade.setValue(gradeDto.getGrade());
+        grade.setComment(gradeDto.getComment());
+        gradeRepository.save(grade);
+        return new GradeDto(grade);
     }
 
     public Grade updateGrade(Long mentorId, Long studentId, Long taskId, Grade grade) {

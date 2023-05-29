@@ -19,12 +19,12 @@ public class ActivityController {
     public ActivityController(ActivityService activityService){
         this.activityService = activityService;
     }
-    @GetMapping("/getNames")
+    @GetMapping("/getNames")        //returns list of all activity names
     public ArrayList<String> getNames(){
         return activityService.getNames();
     }
 
-    @PostMapping("")
+    @PostMapping("")                //creates new activity
     public ActivityDto createActivity(@RequestBody ActivityDto activity){
         return activityService.createActivity(activity);
     }

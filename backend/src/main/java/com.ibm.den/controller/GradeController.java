@@ -8,6 +8,7 @@ import com.ibm.den.services.GradeService;
 
 import java.util.ArrayList;
 import java.util.List;
+
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/grade")
@@ -17,7 +18,7 @@ public class GradeController {
 
     // GET /api/grade
     @GetMapping("")
-    public List<Grade> getAllGrades(){
+    public List<Grade> getAllGrades() {
         return gradeService.getAllGrades();
     }
 
@@ -31,23 +32,12 @@ public class GradeController {
     public ArrayList<ArrayList<GradeDto>> getGradesList(@PathVariable String email) {
         return gradeService.getGradesList(email);
     }
-
-
     // POST /api/grade
     @PostMapping("")
-    public Grade createGrade(@RequestBody Grade grade) {
+    //creates new grade
+    public GradeDto createGrade(@RequestBody GradeDto grade) {
         return gradeService.createGrade(grade);
     }
 
-    // PUT /api/grade/{mentor_id}/{student_id}/{task_id}
-    @PutMapping("/{mentor_id}/{student_id}/{task_id}")
-    public Grade updateGrade(@PathVariable Long mentor_id, @PathVariable Long student_id, @PathVariable Long task_id, @RequestBody Grade grade) {
-        return gradeService.updateGrade(mentor_id, student_id, task_id, grade);
-    }
 
-    // DELETE /api/grade/{mentor_id}/{student_id}/{task_id}
-    @DeleteMapping("/{grade_id}")
-    public void deleteGrade(@PathVariable Long grade_id) {
-        gradeService.deleteGrade(grade_id);
-    }
 }

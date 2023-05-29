@@ -18,16 +18,19 @@ public class AttendanceController {
     }
 
     @GetMapping("/{studentEmail}")
+    //returns list of all attendance records for a student searched by email
     public ArrayList<AttendanceDto> getAttendance(@PathVariable String studentEmail){
         return attendanceService.getAttendance(studentEmail);
     }
 
     @GetMapping("/list{studentEmail}")
+    //retunrs list of list of attendances. it goes list[student[student attendances]]
     public ArrayList<ArrayList<AttendanceDto>> getAttendanceList(@PathVariable String studentEmail){
         return attendanceService.getAttendanceList(studentEmail);
     }
 
     @PostMapping("/{studentEmail}{taskName}")
+    //creates an attendance for a specific student
     public AttendanceDto createAttendance(@PathVariable String studentEmail, @PathVariable String taskName){
         return attendanceService.createAttendance(studentEmail, taskName);
     }
