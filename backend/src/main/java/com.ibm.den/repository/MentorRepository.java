@@ -13,4 +13,5 @@ public interface MentorRepository extends JpaRepository<Mentor, Long> {
 
     public Mentor findByNameAndPassword(String email,String password);
 
+    Mentor findByName(String mentor);
 }
