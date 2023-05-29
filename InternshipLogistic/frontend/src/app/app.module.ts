@@ -29,6 +29,7 @@ import { StudentComponent } from './student/student.component';
 import { MenuStudentComponent } from './menu-student/menu-student.component';
 import { ViewAttendenceComponent } from './view-attendence/view-attendence.component';
 import { ViewGradesComponent } from './view-grades/view-grades.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { ViewGradesComponent } from './view-grades/view-grades.component';
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
 
     RouterModule.forRoot([
       {path: '', component: HomeComponent},
