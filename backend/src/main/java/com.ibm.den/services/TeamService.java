@@ -76,4 +76,17 @@ public class TeamService {
         return teamDtos;
         }
 
+    public void registerTeam(String leaderEmail) {
+        Student student = studentRepository.findByEmail(leaderEmail);
+        Team team = student.getTeam();
+        team.setConfirmed(true);
+        teamRepository.save(team);
+    }
+
+    public void unregisterTeam(String leaderEmail) {
+        Student student = studentRepository.findByEmail(leaderEmail);
+        Team team = student.getTeam();
+        team.setConfirmed(false);
+        teamRepository.delete(team);
+    }
 }

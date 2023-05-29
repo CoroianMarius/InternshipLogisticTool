@@ -34,6 +34,17 @@ public class TeamController {
         return teamService.getUnconfirmedTeams();
     }
 
+    @PutMapping("/registerTeam{leaderEmail}")
+    public void registerTeam( @PathVariable String leaderEmail)
+    {
+        teamService.registerTeam(leaderEmail);
+    }
+
+    @PutMapping("/unregisterTeam{leaderEmail}")
+    public void unregisterTeam( @PathVariable String leaderEmail)
+    {
+        teamService.unregisterTeam(leaderEmail);
+    }
 
     @PostMapping("")
     public Team addTeam(@RequestBody Team team) {
