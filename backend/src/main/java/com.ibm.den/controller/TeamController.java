@@ -28,26 +28,17 @@ public class TeamController {
         return teamService.getTeam(email);
     }
 
-    @GetMapping("/{id}")
-    public Team getTeamById(@PathVariable Long id)
+    @GetMapping("/unconfirmedTeams")
+    public ArrayList<TeamDto> getUnconfirmedTeams()
     {
-        return teamService.getTeamById(id);
+        return teamService.getUnconfirmedTeams();
     }
+
 
     @PostMapping("")
     public Team addTeam(@RequestBody Team team) {
         return teamService.addTeam(team);
     }
 
-    @PutMapping("/{id}")
-    public Team updateTeam(@PathVariable Long id, @RequestBody Team team) {
-        return teamService.updateTeam(id, team);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteTeam(@PathVariable Long id)
-    {
-        teamService.deleteTeam(id);
-    }
 
 }

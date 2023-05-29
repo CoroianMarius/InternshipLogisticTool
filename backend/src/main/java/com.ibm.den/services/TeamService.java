@@ -59,4 +59,21 @@ public class TeamService {
         return teamDto;
 
     }
+
+    public ArrayList<TeamDto> getUnconfirmedTeams() {
+        ArrayList<TeamDto> teamDtos = new ArrayList<>();
+        ArrayList<Team> teams = teamRepository.findByConfirmed(false);
+        for (Team team : teams) {
+            ArrayList <Student> students = studentRepository.findByTeam(team);
+            TeamDto teamDto = new TeamDto();
+            teamDto.setActivityName(team.getActivity().getName());
+            teamDto.setStudents(new ArrayList<>());
+            for (Student student : students) {
+                teamDto.getStudents().add(new StudentDto(student));
+            }
+        teamDtos.add(teamDto);
+        }
+        return teamDtos;
+        }
+
 }

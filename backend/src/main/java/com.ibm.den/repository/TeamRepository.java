@@ -9,4 +9,6 @@ import java.util.ArrayList;
 @Repository
 public interface TeamRepository extends JpaRepository<Team, Long> {
         public ArrayList<Team> findAll();
-        }
+
+    ArrayList<Team> findByConfirmed(boolean b);
+}
