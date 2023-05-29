@@ -1,15 +1,17 @@
-package com.ibm.den.repository;
+package com.ibm.den.Repository;
 
-import com.ibm.den.entities.*;
+import com.ibm.den.Classes.*;
+import jakarta.persistence.Id;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 
 @Repository
-public interface GradeRepository extends JpaRepository<Grade, Long> {
-    public ArrayList<Grade> findAll();
-    public Grade findAllByMentor_idAndStudent_idAndTask_Id(Long mentorId, Long studentId, Long taskId);
+public interface GradeRepository extends JpaRepository<Grade, GradeId> {
+    public ArrayList<Grade> findAllByValueOrderByValueDesc();
+    public Grade findByIdMentorAndIdStudentAndIdTask(Long mentorId, Long studentId, Long taskId);
 
-    ArrayList<Grade> findByStudent(Student student);
+
+    public ArrayList<Grade> findAll();
 }

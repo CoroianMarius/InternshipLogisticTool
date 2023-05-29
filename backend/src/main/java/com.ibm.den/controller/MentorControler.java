@@ -1,7 +1,7 @@
-package com.ibm.den.controller;
+package com.ibm.den.Controller;
 
-import com.ibm.den.entities.Mentor;
-import com.ibm.den.services.MentorService;
+import com.ibm.den.Classes.Mentor;
+import com.ibm.den.Services.MentorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,13 +1,10 @@
-package com.ibm.den.services;
+package com.ibm.den.Services;
 
-import com.ibm.den.dto.StudentDto;
-import com.ibm.den.dto.TeamDto;
-import com.ibm.den.entities.Student;
-import com.ibm.den.entities.Team;
-import com.ibm.den.repository.StudentRepository;
+import com.ibm.den.Classes.Team;
+import com.ibm.den.Controller.TeamController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.ibm.den.repository.TeamRepository;
+import com.ibm.den.Repository.TeamRepository;
 import java.util.ArrayList;
 
 @Service
@@ -15,12 +12,9 @@ public class TeamService {
 
     @Autowired
     private final TeamRepository teamRepository;
-    @Autowired
-    private final StudentRepository studentRepository;
 
-    public TeamService(TeamRepository teamRepository,StudentRepository studentRepository){
+    public TeamService(TeamRepository teamRepository) {
         this.teamRepository = teamRepository;
-        this.studentRepository = studentRepository;
     }
 
     public ArrayList<Team> getAllTeams() {
@@ -38,6 +32,8 @@ public class TeamService {
 
     public Team updateTeam(Long id, Team team) {
         Team currentTeam = teamRepository.findById(id).orElse(null);
+        currentTeam.setLeader(team.getLeader());
+        currentTeam.setStudents(team.getStudents());
         teamRepository.save(currentTeam);
         return currentTeam;
     }
@@ -47,16 +43,4 @@ public class TeamService {
     }
 
 
-    public TeamDto getTeam(String email) {
-        Student student = studentRepository.findByEmail(email);
-        Team team = student.getTeam();
-        ArrayList<Student> students = studentRepository.findByTeam(team);
-        TeamDto teamDto = new TeamDto();
-        teamDto.setActivityName(team.getActivity().getName());
-        for (Student student1 : students) {
-            teamDto.getStudents().add(new StudentDto(student1));
-        }
-        return teamDto;
-
-    }
 }

@@ -1,8 +1,7 @@
-package com.ibm.den.services;
+package com.ibm.den.Services;
 
-import com.ibm.den.dto.StudentDto;
-import com.ibm.den.entities.Student;
-import com.ibm.den.repository.StudentRepository;
+import com.ibm.den.Classes.Student;
+import com.ibm.den.Repository.StudentRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -14,28 +13,22 @@ public class StudentService {
     public StudentService(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
     }
-    public void deleteStudent(String email) {
-        studentRepository.deleteByEmail(email);
+    public void deleteStudent(Long id) {
+        studentRepository.deleteById(id);
     }
 
     public Student updateStudent(Long id, Student student) {
         Student currentStudent = studentRepository.findById(id).orElse(null);
         currentStudent.setName(student.getName());
-        currentStudent.setEmail(student.getEmail());
-        currentStudent.setLeader(student.getLeader());
+        currentStudent.setRole(student.getRole());
         currentStudent.setTeam(student.getTeam());
+        currentStudent.setTasks(student.getTasks());
         return studentRepository.save(currentStudent);
     }
 
-    public StudentDto createStudent(StudentDto student,String email) {
-        Student leader = studentRepository.findByEmail(email);
-        Student currentStudent = new Student();
-        currentStudent.setName(student.getName());
-        currentStudent.setEmail(student.getEmail());
-        currentStudent.setLeader(student.getLeader());
-        currentStudent.setTeam(leader.getTeam());
-        studentRepository.save(currentStudent);
-        return new StudentDto(currentStudent);
+    public Student createStudent(Student student) {
+        Student currentStudent = studentRepository.save(student);
+        return currentStudent;
     }
 
     public Student getStudentById(Long id) {
@@ -44,14 +37,5 @@ public class StudentService {
 
     public ArrayList<Student> getAllStudents() {
         return (ArrayList<Student>) studentRepository.findAll();
-    }
-
-    public ArrayList<StudentDto> getLeaders() {
-        ArrayList<Student> students = studentRepository.findByLeader(true);
-        ArrayList<StudentDto> studentDtos = new ArrayList<>();
-        for (Student student : students) {
-            studentDtos.add(new StudentDto(student));
-        }
-        return studentDtos;
     }
 }

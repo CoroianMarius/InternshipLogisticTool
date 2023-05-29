@@ -1,8 +1,7 @@
-package com.ibm.den.controller;
+package com.ibm.den.Controller;
 
-import com.ibm.den.dto.StudentDto;
-import com.ibm.den.entities.Student;
-import com.ibm.den.services.StudentService;
+import com.ibm.den.Classes.Student;
+import com.ibm.den.Services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,19 +23,14 @@ public class StudentControler {
         return studentService.getAllStudents();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id")
     public Student getStudentById(@PathVariable Long id) {
         return studentService.getStudentById(id);
     }
 
-    @GetMapping("/leaders")
-    public ArrayList<StudentDto> getLeaders() {
-        return studentService.getLeaders();
-    }
-
-    @PostMapping("{email}")
-    public StudentDto createStudent(@RequestBody StudentDto student,@PathVariable String email) {
-        return studentService.createStudent(student,email);
+    @PostMapping("")
+    public Student createStudent(@RequestBody Student student) {
+        return studentService.createStudent(student);
     }
 
     @PutMapping("/{id}")
@@ -44,9 +38,9 @@ public class StudentControler {
         return studentService.updateStudent(id, student);
     }
 
-    @DeleteMapping("/{email}")
-    public void deleteStudent(@PathVariable String email) {
-        studentService.deleteStudent(email);
+    @DeleteMapping("/{id}")
+    public void deleteStudent(@PathVariable Long id) {
+        studentService.deleteStudent(id);
     }
 
 

@@ -1,9 +1,8 @@
-package com.ibm.den.controller;
+package com.ibm.den.Controller;
 
-import com.ibm.den.dto.TeamDto;
-import com.ibm.den.entities.Team;
+import com.ibm.den.Classes.Team;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.ibm.den.services.TeamService;
+import com.ibm.den.Services.TeamService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -20,12 +19,6 @@ public class TeamController {
     public ArrayList<Team> getTeams()
     {
         return teamService.getAllTeams();
-    }
-
-    @GetMapping("/{email}")
-    public TeamDto getTeam(@PathVariable String email)
-    {
-        return teamService.getTeam(email);
     }
 
     @GetMapping("/{id}")
