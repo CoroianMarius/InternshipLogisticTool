@@ -1,1 +1,18 @@
-<p>create-project works!</p>
+
+<main class="main">
+  <div class="right">
+    <div class="container">
+  <ng-container *ngFor="let proj of projects">
+    <div class="card">
+      <span>{{proj.name}}</span>
+    </div>
+  </ng-container>
+
+
+    </div>
+    <button mat-icon-button id="mybutton" (click)="addProject()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</main>
+

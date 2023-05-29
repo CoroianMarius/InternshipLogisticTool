@@ -30,6 +30,8 @@ import { MenuStudentComponent } from './menu-student/menu-student.component';
 import { ViewAttendenceComponent } from './view-attendence/view-attendence.component';
 import { ViewGradesComponent } from './view-grades/view-grades.component';
 import {HttpClientModule} from "@angular/common/http";
+import { MenuLeaderComponent } from './menu-leader/menu-leader.component';
+import { DialogCreateComponent } from './dialog-create/dialog-create.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import {HttpClientModule} from "@angular/common/http";
     StudentComponent,
     MenuStudentComponent,
     ViewAttendenceComponent,
-    ViewGradesComponent
+    ViewGradesComponent,
+    MenuLeaderComponent,
+    DialogCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -73,7 +77,8 @@ import {HttpClientModule} from "@angular/common/http";
       {path: 'register', component: RegisterComponent},
       {path: 'student',component:MenuStudentComponent},
       {path:'selfgrade',component:ViewGradesComponent},
-      {path:'selfattendence',component:ViewAttendenceComponent}// <-- Add this route
+      {path:'selfattendence',component:ViewAttendenceComponent},
+      {path:'leader',component:MenuLeaderComponent}// <-- Add this route
     ]),
     MatTableModule,
   ],

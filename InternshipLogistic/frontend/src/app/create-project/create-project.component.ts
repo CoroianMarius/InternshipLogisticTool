@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import{PROJECTS
+} from "../project_list";
 
 @Component({
   selector: 'app-create-project',
@@ -6,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./create-project.component.css']
 })
 export class CreateProjectComponent {
+  projects=PROJECTS;
+  addProject()
+  {
 
+  }
 }

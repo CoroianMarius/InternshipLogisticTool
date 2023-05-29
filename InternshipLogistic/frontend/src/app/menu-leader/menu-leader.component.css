@@ -18,21 +18,18 @@
 
 .card {
   margin: 2%;
-
-  width: 150px;
-  height: 80px;
-  color: #0c1a83;
+  background: linear-gradient(145deg, #0c1a83 0%, #8F0051 100%);
+  width: 1500px;
+  height: 150px;
+  color:white;
   border-radius: 10px;
   font-family: "Times New Roman";
-  border-radius: 30px;
-  background: #e0e0e0;
-  box-shadow: 15px 15px 30px #bebebe,
-  -15px -15px 30px #ffffff;
+  box-shadow: 20px 20px 30px #888;
   transition: .2s all;
   cursor: pointer;
   align-items: center;
   text-align: center;
-  font-size: 15px;
+  font-size: 20px;
   padding-top: 60px;
 
 }
@@ -55,8 +52,8 @@
   filter: blur(0px);
   opacity: 1;
   box-shadow: 0 8px 20px 0px rgba(0, 0, 0, 0.125);
-  background: rgba(130, 53, 102, 0.07);
-  color: #0c1a83;
+  background:#823566;
+  color: white;
 }
 
 .chosen
@@ -65,11 +62,3 @@
   margin: 0;
   padding: 0;
 }
-#mybutton
-{
-  background:#0c1a83;
-  color:white;
-}
-
-
-
