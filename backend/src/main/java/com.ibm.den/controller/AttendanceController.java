@@ -29,7 +29,7 @@ public class AttendanceController {
         return attendanceService.getAttendanceList(studentEmail);
     }
 
-    @PostMapping("/{studentEmail}{taskName}")
+    @PostMapping("/{studentEmail}/{taskName}")
     //creates an attendance for a specific student. use TaskService.addTask()
     public AttendanceDto createAttendance(@PathVariable String studentEmail, @PathVariable String taskName){
         return attendanceService.createAttendance(studentEmail, taskName);

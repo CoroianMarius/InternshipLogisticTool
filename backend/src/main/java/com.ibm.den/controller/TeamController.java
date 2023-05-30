@@ -28,7 +28,7 @@ public class TeamController {
         return teamService.getUnconfirmedTeams();
     }
 
-    @PutMapping("/registerTeam{leaderEmail}")
+    @PutMapping("/registerTeam/{leaderEmail}")
     //registers the team of the leader with the given email
     public void registerTeam( @PathVariable String leaderEmail)
     {

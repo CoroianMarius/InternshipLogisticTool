@@ -16,13 +16,6 @@ public class GradeController {
     @Autowired
     private GradeService gradeService;
 
-    // GET /api/grade
-    @GetMapping("")
-    public List<Grade> getAllGrades() {
-        return gradeService.getAllGrades();
-    }
-
-    // GET /api/grade/{mentor_id}/{student_id}/{task_id}
     @GetMapping("/{email}")
     public ArrayList<GradeDto> getGrades(@PathVariable String email) {
         return gradeService.getGrades(email);

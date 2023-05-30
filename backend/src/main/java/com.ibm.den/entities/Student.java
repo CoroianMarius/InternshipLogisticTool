@@ -21,7 +21,7 @@ public class Student extends BaseEntity{
     @Column(nullable = true)
     private String password;
 
-    @ManyToOne(cascade=CascadeType.ALL)
+    @ManyToOne(cascade=CascadeType.DETACH)
     @JsonBackReference
     private Team team;
     @Column(nullable = false)

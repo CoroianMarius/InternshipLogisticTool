@@ -21,9 +21,11 @@ private ArrayList<TaskDto> tasks = new ArrayList<>();
 
     public ActivityDto(Activity activity) {
         this.name = activity.getName();
-        this.tasks = new ArrayList<>();
-        for (Task task : activity.getTasks()) {
-            this.tasks.add(new TaskDto(task));
+
+        if (!Objects.isNull(activity.getTasks())) {
+            for (Task task : activity.getTasks()) {
+                this.tasks.add(new TaskDto(task));
+            }
         }
     }
 

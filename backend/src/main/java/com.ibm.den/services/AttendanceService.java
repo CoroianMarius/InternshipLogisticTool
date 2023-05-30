@@ -55,6 +55,7 @@ public class AttendanceService {
         Attendance attendance = new Attendance();                                               //create the attendance
         attendance.setStudent(student);
         attendance.setTask(task);
+        attendance.setPresent(false);
         attendanceRepository.save(attendance);
 
         return new AttendanceDto(attendance);

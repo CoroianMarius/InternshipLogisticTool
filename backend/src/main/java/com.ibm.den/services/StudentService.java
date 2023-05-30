@@ -15,7 +15,8 @@ public class StudentService {
         this.studentRepository = studentRepository;
     }
     public void deleteStudent(String email) {
-        studentRepository.deleteByEmail(email);
+        Student s = studentRepository.findByEmail(email);
+        studentRepository.delete(s);
     }
 
     public Student updateStudent(Long id, Student student) {
@@ -27,13 +28,14 @@ public class StudentService {
         return studentRepository.save(currentStudent);
     }
 
-    public StudentDto createStudent(StudentDto student,String email) {
+    public StudentDto createStudent(StudentDto student,String email,String password) {
         Student leader = studentRepository.findByEmail(email);
         Student currentStudent = new Student();
         currentStudent.setName(student.getName());
         currentStudent.setEmail(student.getEmail());
         currentStudent.setLeader(student.getLeader());
         currentStudent.setTeam(leader.getTeam());
+        currentStudent.setPassword(password);
         studentRepository.save(currentStudent);
         return new StudentDto(currentStudent);
     }
