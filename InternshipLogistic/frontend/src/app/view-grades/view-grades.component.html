@@ -1,9 +1,26 @@
 <h2>STUDENTS</h2>
-<ul class="heroes">
-  <li *ngFor="let hero of student">
-    <button type="button">
-      <span class="badge">{{hero.id}}</span>
-      <span class="name">{{hero.name}}</span>
-    </button>
-  </li>
-</ul>
+<div *ngIf="grades.length > 1">
+  <ul>
+    <li *ngFor="let item of grades">
+      <p>Task: {{ item[0]?.task }}</p>
+      <p>Mentor: {{ item[0]?.mentor }}</p>
+      <p>Grade: {{ item[0]?.grade }}</p>
+      <p>Comment: {{ item[0]?.comment }}</p>
+    </li>
+  </ul>
+</div>
+<div *ngIf="grades.length === 0">
+  <p>No attendance records available.</p>
+</div>
+
+<div *ngIf="grades.length === 1">
+  <ul>
+    <li >
+      <p>Task: {{ grades[0]?.task }}</p>
+      <p>Mentor: {{ grades[0]?.mentor }}</p>
+      <p>Grade: {{ grades[0]?.grade }}</p>
+      <p>Comment: {{ grades[0]?.comment }}</p>
+    </li>
+  </ul>
+</div>
+
