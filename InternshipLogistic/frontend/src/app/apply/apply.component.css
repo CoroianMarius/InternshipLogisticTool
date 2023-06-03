@@ -16,44 +16,44 @@ mat-toolbar {
 
 .logo {
   height: 80px;
-  margin-right:10px;
+  margin-right: 10px;
 }
 
 .spacer {
   flex: 0.8 0.7 auto;
 }
 
-mat-icon{
+mat-icon {
   color: aliceblue;
   height: 20px;
 }
-.option
-{
+
+.option {
   color: aliceblue;
 
 
 }
+
 .option:hover {
 
   color: #60BAF6;
   transition: background-color 0.3s ease-in-out;
 }
-.option a:hover
-{
+
+.option a:hover {
   color: #60BAF6;
   transition: background-color 0.3s ease-in-out;
 }
 
-#email
-{
-  margin-left:30px;
-  margin-top:20px;
+#email {
+  margin-left: 30px;
+  margin-top: 20px;
 }
-.reg h1
-{
+
+.reg h1 {
   text-align: center;
   font-family: "Times New Roman";
-  margin-top:50px;
+  margin-top: 50px;
 
 }
 
@@ -90,9 +90,7 @@ mat-icon{
 
   text-decoration: none;
   cursor: pointer;
-  margin-top:10px;
-
-
+  margin-top: 10px;
 
 
 }

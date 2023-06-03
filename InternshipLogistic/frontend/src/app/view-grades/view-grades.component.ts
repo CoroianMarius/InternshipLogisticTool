@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import{STUDENTS} from "../student_lists";
+import {Component} from '@angular/core';
+import {STUDENTS} from "../student_lists";
 
 @Component({
   selector: 'app-view-grades',
@@ -7,5 +7,5 @@ import{STUDENTS} from "../student_lists";
   styleUrls: ['./view-grades.component.css']
 })
 export class ViewGradesComponent {
-  student=STUDENTS;
+  student = STUDENTS;
 }

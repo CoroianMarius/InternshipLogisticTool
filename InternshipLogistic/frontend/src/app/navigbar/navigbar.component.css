@@ -16,30 +16,31 @@ mat-toolbar {
 
 .logo {
   height: 80px;
-  margin-left:1150px;
+  margin-left: 1150px;
 }
 
 .spacer {
   flex: 0.9 0.9 auto;
 }
 
-mat-icon{
+mat-icon {
   color: aliceblue;
   height: 20px;
 }
-.option
-{
+
+.option {
   color: aliceblue;
 
 
 }
+
 .option:hover {
 
   color: #60BAF6;
   transition: background-color 0.3s ease-in-out;
 }
-.option a:hover
-{
+
+.option a:hover {
   color: #60BAF6;
   transition: background-color 0.3s ease-in-out;
 }

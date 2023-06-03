@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import{PROJECTS
+import {Component} from '@angular/core';
+import {
+  PROJECTS
 } from "../project_list";
 
 @Component({
@@ -8,9 +9,9 @@ import{PROJECTS
   styleUrls: ['./create-project.component.css']
 })
 export class CreateProjectComponent {
-  projects=PROJECTS;
-  addProject()
-  {
+  projects = PROJECTS;
+
+  addProject() {
 
   }
 }

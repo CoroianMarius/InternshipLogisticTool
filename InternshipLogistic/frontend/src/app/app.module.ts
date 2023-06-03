@@ -33,7 +33,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { MenuLeaderComponent } from './menu-leader/menu-leader.component';
 import { DialogCreateComponent } from './dialog-create/dialog-create.component';
 import {MatSelectModule} from "@angular/material/select";
-import { PersonDisplayComponent } from './person-display/person-display.component';
+import {ViewTeamService} from "./services/view-team.service";
 
 @NgModule({
   declarations: [
@@ -54,8 +54,7 @@ import { PersonDisplayComponent } from './person-display/person-display.componen
     ViewAttendenceComponent,
     ViewGradesComponent,
     MenuLeaderComponent,
-    DialogCreateComponent,
-    PersonDisplayComponent
+    DialogCreateComponent
   ],
     imports: [
         BrowserModule,
@@ -86,7 +85,7 @@ import { PersonDisplayComponent } from './person-display/person-display.componen
         MatTableModule,
         MatSelectModule,
     ],
-  providers: [],
+  providers: [ViewTeamService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,16 +1,15 @@
 
-.right
-{
+.right {
   position: relative;
   width: 75%;
   float: right;
   height: 100vh;
-  padding:20px;
-  margin-top:20px;
-
+  padding: 20px;
+  margin-top: 20px;
 
 
 }
+
 .container {
   display: flex;
 
@@ -44,7 +43,7 @@
 }
 
 .container:hover .card {
-  filter: blur(1px);
+  filter: blur(3px);
   opacity: .5;
   transform: scale(.98);
   box-shadow: none;
@@ -59,16 +58,15 @@
   color: #0c1a83;
 }
 
-.chosen
-{
+.chosen {
   height: 100%;
   margin: 0;
   padding: 0;
 }
-#mybutton
-{
-  background:#0c1a83;
-  color:white;
+
+#mybutton {
+  background: #0c1a83;
+  color: white;
 }
 
 

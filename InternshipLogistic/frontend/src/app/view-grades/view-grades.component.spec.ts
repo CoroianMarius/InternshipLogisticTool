@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ViewGradesComponent } from './view-grades.component';
+import {ViewGradesComponent} from './view-grades.component';
 
 describe('ViewGradesComponent', () => {
   let component: ViewGradesComponent;
@@ -8,9 +8,9 @@ describe('ViewGradesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ViewGradesComponent ]
+      declarations: [ViewGradesComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(ViewGradesComponent);
     component = fixture.componentInstance;
