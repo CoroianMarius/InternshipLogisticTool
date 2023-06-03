@@ -19,7 +19,7 @@ public class AddEntities {
         this.populateDb = populateDb;
     }
 
-    @GetMapping("")
+    @PostMapping("")
     public void makeDb(){
         populateDb.populateDb();
     }
