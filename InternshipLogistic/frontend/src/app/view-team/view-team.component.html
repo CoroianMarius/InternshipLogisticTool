@@ -1,12 +1,15 @@
 <h2>Team Leaders</h2>
 
 <div *ngFor="let Leader of allLeaders">
-  <button (click)="onSelect(Leader)">{{Leader.name}}</button>
+  <button (click)="onSelectLeader(Leader)">{{Leader.name}}</button>
 </div>
 
 <div *ngIf="selectedLeader">
   <h2>{{selectedLeader.name}}'s Team</h2>
   <ol>
-   <li *ngFor="let student of allStudents">{{student.name}}</li>
+    <li *ngFor="let student of allStudents">
+      {{student.name}}
+      <button> View Attendance and grades </button>
+    </li>
   </ol>
 </div>

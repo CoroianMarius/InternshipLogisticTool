@@ -19,4 +19,7 @@ export class ViewTeamService{
         return Leaders;
       }))
   }
+  onSelectViewGradesAndAttendance(){
+    return this.http.get('')
+  }
 }

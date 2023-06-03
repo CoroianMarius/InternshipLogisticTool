@@ -30,7 +30,7 @@ export class ViewTeamComponent implements OnInit {
     });
 }
 
-  onSelect(Leader: Student){
+  onSelectLeader(Leader: Student){
     this.selectedLeader=Leader;
     this.http.get<any>('http://localhost:8080/api/team/' +Leader.email)
       .pipe(map((res) => {
