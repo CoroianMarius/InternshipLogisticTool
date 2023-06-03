@@ -36,8 +36,10 @@ export class ViewTeamComponent implements OnInit {
       .pipe(map((res) => {
         const Team = [];
         for(const key in res){
-          if(res.hasOwnProperty(key)&& key !== 'id'){
-            Team.push({...res[key], id:key})
+          if (key !== 'id') {
+            const student = { ...res[key], id: key };
+            delete student.id; // Exclude the 'id' property
+            Team.push(student);
           }
         }
         return Team;
