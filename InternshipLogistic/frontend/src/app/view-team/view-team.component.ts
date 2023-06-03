@@ -11,7 +11,7 @@ import {ViewTeamService} from "../services/view-team.service";
   styleUrls: ['./view-team.component.css']
 })
 export class ViewTeamComponent implements OnInit {
-  Students?: Student[];
+  allStudents: Student[]= [] ;
 
   selectedLeader?: Student;
   allLeaders: Student[] = [];
@@ -30,21 +30,22 @@ export class ViewTeamComponent implements OnInit {
     });
 }
 
-  onSelect(leader: Student) {
-    this.http
-      .get<any>(`http://localhost:8080/api/team/${leader.email}`)
-      .pipe(map((response) => {
-        const students = [];
-        for (const key in response) {
-          if (response.hasOwnProperty(key)) {
-            students.push({...response[key], id: key});
+  onSelect(Leader: Student){
+    this.selectedLeader=Leader;
+    this.http.get<any>('http://localhost:8080/api/team/' +Leader.email)
+      .pipe(map((res) => {
+        const Team = [];
+        for(const key in res){
+          if(res.hasOwnProperty(key)){
+            Team.push({...res[key], id:key})
           }
         }
-        return students;
+        return Team;
       }))
-      .subscribe((response) => {
-        this.Students = response; // Assign the retrieved students to the Students property
-      });
+      .subscribe((Team) =>{
+        console.log(Team[1]);
+        this.allStudents= Team[1];
+      })
   }
 
 

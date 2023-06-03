@@ -7,6 +7,6 @@
 <div *ngIf="selectedLeader">
   <h2>{{selectedLeader.name}}'s Team</h2>
   <ul>
-    <li *ngFor="let student of Students">{{student.name}}</li>
+    <li *ngFor="let student of allStudents">{{student.name}}</li>
   </ul>
 </div>
