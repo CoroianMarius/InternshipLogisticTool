@@ -209,10 +209,10 @@ public class PopulateDb {
         grade3.setTask(tasks.get(3));
         grade4.setTask(tasks.get(1));
 
-        grade1.setValue(5);
-        grade2.setValue(4);
-        grade3.setValue(3);
-        grade4.setValue(2);
+        grade1.setValue(5L);
+        grade2.setValue(4L);
+        grade3.setValue(3L);
+        grade4.setValue(2L);
 
         grade1.setComment("Comment1");
         grade2.setComment("Comment2");

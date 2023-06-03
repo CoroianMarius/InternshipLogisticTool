@@ -21,14 +21,14 @@ public class Grade extends BaseEntity{
     @JoinColumn()
     private Task task;
     @Column
-    private int value;
+    private Long value;
 
     @Column
     private String comment;
 
     public Grade() {}
 
-    public Grade(long id, Mentor mentor, Student student, Task task, int value, String comment) {
+    public Grade(long id, Mentor mentor, Student student, Task task, Long value, String comment) {
         this.id = id;
         this.mentor = mentor;
         this.student = student;
@@ -70,11 +70,11 @@ public class Grade extends BaseEntity{
         this.task = task;
     }
 
-    public int getValue() {
+    public Long getValue() {
         return value;
     }
 
-    public void setValue(int value) {
+    public void setValue(Long value) {
         this.value = value;
     }
 

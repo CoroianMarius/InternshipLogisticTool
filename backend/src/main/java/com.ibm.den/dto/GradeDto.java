@@ -12,13 +12,13 @@ public class GradeDto
     private String email;
     private String mentor;
     private String task;
-    private Integer grade;
+    private Long grade;
     private String comment;
 
     public GradeDto() {
     }
 
-    public GradeDto(String email, String mentor, String task, Integer grade, String comment) {
+    public GradeDto(String email, String mentor, String task, Long grade, String comment) {
         this.email = email;
         this.mentor = mentor;
         this.task = task;
@@ -58,11 +58,11 @@ public class GradeDto
         this.task = task;
     }
 
-    public Integer getGrade() {
+    public Long getGrade() {
         return grade;
     }
 
-    public void setGrade(Integer grade) {
+    public void setGrade(Long grade) {
         this.grade = grade;
     }
 
