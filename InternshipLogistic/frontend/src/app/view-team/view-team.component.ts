@@ -36,7 +36,7 @@ export class ViewTeamComponent implements OnInit {
       .pipe(map((res) => {
         const Team = [];
         for(const key in res){
-          if(res.hasOwnProperty(key)){
+          if(res.hasOwnProperty(key)&& key !== 'id'){
             Team.push({...res[key], id:key})
           }
         }
@@ -44,7 +44,8 @@ export class ViewTeamComponent implements OnInit {
       }))
       .subscribe((Team) =>{
         console.log(Team[1]);
-        this.allStudents= Team[1];
+        const studentObject=Team[1];
+        this.allStudents=  Object.values(studentObject);
       })
   }
 
