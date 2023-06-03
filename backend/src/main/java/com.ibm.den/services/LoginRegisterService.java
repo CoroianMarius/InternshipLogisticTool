@@ -4,15 +4,14 @@ import com.ibm.den.entities.Activity;
 import com.ibm.den.entities.Mentor;
 import com.ibm.den.entities.Student;
 import com.ibm.den.entities.Team;
-import com.ibm.den.entities.connection.LoginRequest;
-import com.ibm.den.entities.connection.LoginResponse;
-import com.ibm.den.entities.connection.RegisterTeam;
+import com.ibm.den.entities.util.LoginRequest;
+import com.ibm.den.entities.util.LoginResponse;
+import com.ibm.den.entities.util.RegisterTeam;
 import com.ibm.den.repository.ActivityRepository;
 import com.ibm.den.repository.MentorRepository;
 import com.ibm.den.repository.StudentRepository;
 import com.ibm.den.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

@@ -1,13 +1,11 @@
 package com.ibm.den.controller;
-import com.ibm.den.entities.*;
-import com.ibm.den.entities.connection.LoginRequest;
-import com.ibm.den.entities.connection.LoginResponse;
-import com.ibm.den.entities.connection.RegisterTeam;
+import com.ibm.den.entities.util.LoginRequest;
+import com.ibm.den.entities.util.LoginResponse;
+import com.ibm.den.entities.util.RegisterTeam;
 import com.ibm.den.services.LoginRegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api")
