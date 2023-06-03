@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class PopulateDb {
 
@@ -105,15 +107,16 @@ public class PopulateDb {
         teams.add(team5);
         teams.add(team6);
 
-        Student student1 = new Student();
-        Student student2 = new Student();
-        Student student3 = new Student();
-        Student student4 = new Student();
-        Student student5 = new Student();
+
 
 
         for (int i = 0; i < 6; i++) {
 
+            Student student1 = new Student();
+            Student student2 = new Student();
+            Student student3 = new Student();
+            Student student4 = new Student();
+            Student student5 = new Student();
 
             student1.setName("Student1"+Integer.toString(i));
             student2.setName("Student2"+Integer.toString(i));
@@ -174,14 +177,18 @@ public class PopulateDb {
         Grade grade3 = new Grade();
         Grade grade4 = new Grade();
 
-        attendance1.setStudent(studentRepository.findById(30L).get());
-        attendance2.setStudent(studentRepository.findById(31L).get());
-        attendance3.setStudent(studentRepository.findById(32L).get());
-        attendance4.setStudent(studentRepository.findById(33L).get());
+        ArrayList<Student> students = studentRepository.findAll();
 
-        attendance1.setTask(taskRepository.findById(3L).get());
-        attendance2.setTask(taskRepository.findById(4L).get());
-        attendance3.setTask(taskRepository.findById(5L).get());
+        attendance1.setStudent(students.get(1));
+        attendance2.setStudent(students.get(2));
+        attendance3.setStudent(students.get(3));
+        attendance4.setStudent((students.get(4)));
+
+        ArrayList <Task> tasks = taskRepository.findAll();
+
+        attendance1.setTask(tasks.get(1));
+        attendance2.setTask(tasks.get(2));
+        attendance3.setTask(tasks.get(3));
 
         attendance1.setPresent(true);
         attendance2.setPresent(true);
@@ -191,16 +198,16 @@ public class PopulateDb {
         attendanceRepository.save(attendance2);
         attendanceRepository.save(attendance3);
 
-        grade1.setStudent(studentRepository.findById(30L).get());
-        grade2.setStudent(studentRepository.findById(31L).get());
-        grade3.setStudent(studentRepository.findById(32L).get());
-        grade4.setStudent(studentRepository.findById(33L).get());
+        grade1.setStudent(students.get(1));
+        grade2.setStudent(students.get(2));
+        grade3.setStudent(students.get(3));
+        grade4.setStudent(students.get(4));
 
 
-        grade1.setTask(taskRepository.findById(3L).get());
-        grade2.setTask(taskRepository.findById(4L).get());
-        grade3.setTask(taskRepository.findById(5L).get());
-        grade4.setTask(taskRepository.findById(3L).get());
+        grade1.setTask(tasks.get(1));
+        grade2.setTask(tasks.get(2));
+        grade3.setTask(tasks.get(3));
+        grade4.setTask(tasks.get(1));
 
         grade1.setValue(5);
         grade2.setValue(4);
