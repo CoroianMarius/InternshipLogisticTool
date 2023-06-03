@@ -18,7 +18,7 @@ public class Student extends BaseEntity{
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = true)
+    @Column
     private String password;
 
     @ManyToOne(cascade=CascadeType.DETACH)
@@ -26,7 +26,7 @@ public class Student extends BaseEntity{
     private Team team;
     @Column(nullable = false)
     private boolean leader;
-    @Column(nullable = false)
+    @Column
     private String email;
 
 
