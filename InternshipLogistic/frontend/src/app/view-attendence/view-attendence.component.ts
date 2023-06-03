@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { map } from "rxjs/operators";
 import { Student } from "../model/Student";
 import { ViewAttendenceService } from "../services/view-attendence.service";
+import { Attendance } from "../model/Attendance";
 
 @Component({
   selector: 'app-view-attendence',
@@ -11,7 +12,7 @@ import { ViewAttendenceService } from "../services/view-attendence.service";
 })
 export class ViewAttendenceComponent implements OnInit {
   selectedStudent = new Student("Student20", "email20", false);
-  attendances: any[] = [];
+  attendance: any[] = [];
 
   constructor(private http: HttpClient, private viewAttendenceService: ViewAttendenceService) {
   }
@@ -23,11 +24,15 @@ export class ViewAttendenceComponent implements OnInit {
   private viewAttendence() {
     this.viewAttendenceService.ViewAttendence(this.selectedStudent)
       .pipe(
-        map((data) => data.filter((attendance) => Object.keys(attendance).length > 1))
+        map((res: Attendance[]) => {
+          // Filter out the tuples with non-empty data
+          return res.filter((attendance: Attendance) => Object.keys(attendance).length > 1);
+        })
       )
-      .subscribe((attendances) => {
-        console.log(attendances);
-        this.attendances = attendances;
+      .subscribe((filteredAttendance: Attendance[]) => {
+        this.attendance = filteredAttendance;
+        console.log(filteredAttendance);
       });
   }
+
 }

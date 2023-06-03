@@ -1,5 +1,17 @@
-<ul>
-  <li *ngFor="let att of attendances">
-    <p>{{ att.task }}</p>
-  </li>
-</ul>
+<div *ngIf="attendance.length > 1">
+  <h3>Attendance:</h3>
+  <ul>
+    <li *ngFor="let item of attendance">
+      <p>Task: {{ item[0]?.task }}</p>
+      <p>Presence: {{ item[0]?.present }}</p>
+    </li>
+  </ul>
+</div>
+<div *ngIf="attendance.length === 0">
+  <p>No attendance records available.</p>
+</div>
+<div *ngIf="attendance.length===1">
+
+  <p>Task: {{ attendance[0]?.task }}</p>
+  <p>Presence: {{ attendance[0]?.present }}</p>
+</div>

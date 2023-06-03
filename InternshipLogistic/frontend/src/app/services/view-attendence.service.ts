@@ -12,12 +12,13 @@ export class ViewAttendenceService {
   constructor(private http: HttpClient) {}
 
   ViewAttendence(self: Student) {
-    return this.http.get<{ [key: string]: Attendance }>('http://localhost:8080/api/attendance/list' + self.email)
+    return this.http.get<{ [key: string]: Attendance }>('http://localhost:8080/api/attendance/' + self.email)
       .pipe(
         map((res) => {
           const attendances = [];
           for (const key in res) {
             if (res.hasOwnProperty(key)) {
+              if(key!=="id")
               attendances.push({ ...res[key], id: key });
             }
           }
