@@ -57,15 +57,25 @@ public class LoginRegisterService {
 
     public void register(RegisterTeam a)
     {
-        Student s = new Student();
-        s.setName(a.getLeader());
-        s.setEmail(a.getEmail());
-        s.setLeader(true);
         Team t = new Team();
+
         t.setActivity(activityRepository.findByName(a.getActivity()));
         t.setConfirmed(false);
-        s.setTeam(t);
         teamRepository.save(t);
-        studentRepository.save(s);
+
+        Boolean first = true;
+        for (String s : a.getMembers()) {
+            Student st = new Student();
+            if(first){
+                first = false;
+                st.setLeader(true);
+            }
+            else {
+                st.setLeader(false);
+            }
+            st.setName(s);
+            st.setTeam(t);
+            studentRepository.save(st);
+        }
     }
 }
