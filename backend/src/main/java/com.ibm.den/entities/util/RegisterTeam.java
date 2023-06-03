@@ -1,4 +1,4 @@
-package com.ibm.den.entities.connection;
+package com.ibm.den.entities.util;
 
 import java.util.ArrayList;
 
