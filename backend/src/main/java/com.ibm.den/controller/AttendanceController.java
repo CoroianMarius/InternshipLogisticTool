@@ -23,7 +23,7 @@ public class AttendanceController {
         return attendanceService.getAttendance(studentEmail);
     }
 
-    @GetMapping("/list{studentEmail}")
+    @GetMapping("/list/{studentEmail}")
     //retunrs list of list of attendances. it goes list[student[student attendances]]
     public ArrayList<ArrayList<AttendanceDto>> getAttendanceList(@PathVariable String studentEmail){
         return attendanceService.getAttendanceList(studentEmail);

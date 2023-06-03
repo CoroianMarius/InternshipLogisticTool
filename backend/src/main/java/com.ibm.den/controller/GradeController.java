@@ -21,7 +21,7 @@ public class GradeController {
         return gradeService.getGrades(email);
     }
 
-    @GetMapping("/list{email}")
+    @GetMapping("/list/{email}")
     public ArrayList<ArrayList<GradeDto>> getGradesList(@PathVariable String email) {
         return gradeService.getGradesList(email);
     }
