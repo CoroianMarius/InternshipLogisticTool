@@ -1,28 +1,13 @@
 package com.ibm.den.entities.connection;
 
+import java.util.ArrayList;
+
 public class RegisterTeam {
-    private String leader;
+
+    private ArrayList<String> members = new ArrayList<>();
     private String activity;
-    private String email;
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-
 
     public RegisterTeam() {
-    }
-
-    public String getLeader() {
-        return leader;
-    }
-
-    public void setLeader(String leader) {
-        this.leader = leader;
     }
 
     public String getActivity() {
@@ -31,5 +16,13 @@ public class RegisterTeam {
 
     public void setActivity(String activity) {
         this.activity = activity;
+    }
+
+    public ArrayList<String> getMembers() {
+        return members;
+    }
+
+    public void setMembers(ArrayList<String> members) {
+        this.members = members;
     }
 }
