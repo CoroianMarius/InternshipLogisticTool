@@ -3,9 +3,9 @@ export class Grade
   email:string;
   mentor:string;
   task:string;
-  grade:bigint;
+  grade:number;
   comment:string;
-  constructor(email:string,mentor:string,task:string,grade:bigint,comment:string)
+  constructor(email:string,mentor:string,task:string,grade:number,comment:string)
   {
     this.email=email;
     this.mentor=email;
