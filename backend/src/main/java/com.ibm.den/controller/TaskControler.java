@@ -23,7 +23,7 @@ public class TaskControler {
         return taskService.createTask(task, ActivityName);
     }
 
-    @PostMapping("assignTask/{taskName}")
+    @PostMapping("/assignTask/{taskName}")
     //Assigns a task to a list of students. Remember to send the task name in the path
     public void assignTask(@RequestBody ArrayList<String> studentEmails, @PathVariable String taskName) {
         taskService.assignTask(studentEmails, taskName);
