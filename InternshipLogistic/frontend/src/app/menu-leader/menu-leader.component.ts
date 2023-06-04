@@ -8,7 +8,7 @@ import {Team} from "../model/Team";
 import { ChartType, ChartOptions } from 'chart.js';
 import {Grade} from "../model/Grade";
 import {ViewGradesTeamService} from "../services/view-grades-team.service";
-
+import { AuthService } from '../services/auth.service';
 
 
 @Component({
@@ -21,17 +21,20 @@ export class MenuLeaderComponent implements OnInit {
     private route: ActivatedRoute,
     private http: HttpClient,
     private viewTeamService: ViewTeamService,
-    private viewGradesTeamService: ViewGradesTeamService
-  ) {}
+    private viewGradesTeamService: ViewGradesTeamService,
+    private authService: AuthService
+  ) {
+    this.selectedLeader=this.authService.getLoggedInUser();
+  }
 
-  logedin?:string;
+
   allStudents: Student[]= [] ;
   grades:Grade[]=[];
   selectedStudent = new Student("Student20", "email20", false);
 
 
 
-  selectedLeader=new  Student("Student10","email10",true);
+  selectedLeader:Student;
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {

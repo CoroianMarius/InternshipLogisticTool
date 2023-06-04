@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 @Component({
   selector: 'app-menu-mentor',
   templateUrl: './menu-mentor.component.html',
