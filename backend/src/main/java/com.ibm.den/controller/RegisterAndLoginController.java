@@ -22,8 +22,7 @@ public class RegisterAndLoginController {
         loginRegisterService.register(a);
     }
 
-    @PostMapping("/login")
-    //Returns the enum : LEADER, STUDENT, etc. Check LoginResponse.java for struct
+    @GetMapping("/login")
     public LoginResponse login(@RequestBody LoginRequest a){
         return loginRegisterService.login(a);
     }
