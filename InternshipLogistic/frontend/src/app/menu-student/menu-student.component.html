@@ -15,10 +15,10 @@
     <br>
     <div class="chosen">
       <ng-container *ngIf="selectedComponent === 'attend'">
-        <app-view-attendence></app-view-attendence>
+        <app-view-attendence [selectedStudent]="selectedUser" ></app-view-attendence>
       </ng-container>
       <ng-container *ngIf="selectedComponent === 'grades'">
-        <app-view-grades></app-view-grades>
+        <app-view-grades [selectedStudent]="selectedUser"></app-view-grades>
       </ng-container>
 
     </div>

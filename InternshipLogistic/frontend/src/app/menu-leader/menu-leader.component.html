@@ -3,7 +3,7 @@
 <main class="main">
   <div class="right">
     <div class="container" *ngFor="let student of allStudents">
-      <div class="card">
+      <div class="card"(click)="showStudentData(student)">
         <div class="card-info">
           <div class="card-avatar"></div>
           <div class="card-title">{{ student.name }}</div>
@@ -26,11 +26,13 @@
 
 <div class="chosen">
   <div class="todisplay">
-    <app-view-attendence></app-view-attendence>
+    <app-view-attendence *ngIf="selectedStudent" [selectedStudent]="selectedStudent"></app-view-attendence>
+
   </div>
   <div class="todisplay">
-    <app-view-grades></app-view-grades>
+    <app-view-grades *ngIf="selectedStudent" [selectedStudent]="selectedStudent"></app-view-grades>
   </div>
 </div>
+
 
 

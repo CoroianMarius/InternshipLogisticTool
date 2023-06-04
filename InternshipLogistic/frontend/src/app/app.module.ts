@@ -88,7 +88,7 @@ import { PieChartComponent } from './pie-chart/pie-chart.component';
         MatTableModule,
         MatSelectModule,
     ],
-  providers: [ViewTeamService],
+  providers: [ViewTeamService,MenuLeaderComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

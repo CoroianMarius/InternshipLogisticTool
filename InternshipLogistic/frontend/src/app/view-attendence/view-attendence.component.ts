@@ -1,5 +1,5 @@
 import {HttpClient} from "@angular/common/http";
-import {Component, OnInit} from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import {map} from "rxjs/operators";
 import {Student} from "../model/Student";
 import {ViewAttendenceService} from "../services/view-attendence.service";
@@ -9,7 +9,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {ReactiveFormsModule} from '@angular/forms';
 import {Grade} from "../model/Grade";
-
+import { Subscription } from 'rxjs';
+import { MenuLeaderComponent } from '../menu-leader/menu-leader.component';
 
 @Component({
   selector: 'app-view-attendence',
@@ -17,17 +18,29 @@ import {Grade} from "../model/Grade";
   styleUrls: ['./view-attendence.component.css']
 })
 export class ViewAttendenceComponent implements OnInit {
-  selectedStudent = new Student("Student20", "email20", false);
+  @Input() selectedStudent!: Student;
+  refreshSubscription!: Subscription;
   attendance: any[] = [];
   dataSource: MatTableDataSource<Attendance>;
   displayedColumns: string[] = ['task', 'presence'];
 
-  constructor(private http: HttpClient, private viewAttendenceService: ViewAttendenceService) {
+  constructor(private http: HttpClient, private viewAttendenceService: ViewAttendenceService,private menuLeaderComponent: MenuLeaderComponent) {
     this.dataSource = new MatTableDataSource<Attendance>([]);
   }
 
   ngOnInit() {
     this.viewAttendence();
+    this.refreshSubscription = this.menuLeaderComponent.refreshDataSubject.subscribe(() => {
+      // Refresh attendance data here
+      // You can make an API call or update the data directly if it's available in this component
+    });
+  }
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['selectedStudent'] && !changes['selectedStudent'].firstChange) {
+      // Handle the change in selectedStudent here
+      // Reload the attendance data or update the component accordingly
+      this.viewAttendence();
+    }
   }
 
   private viewAttendence() {
@@ -44,5 +57,7 @@ export class ViewAttendenceComponent implements OnInit {
         console.log(filteredAttendance);
       });
   }
-
+  ngOnDestroy() {
+    this.refreshSubscription.unsubscribe();
+  }
 }

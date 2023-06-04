@@ -9,7 +9,7 @@ import { ChartType, ChartOptions } from 'chart.js';
 import {Grade} from "../model/Grade";
 import {ViewGradesTeamService} from "../services/view-grades-team.service";
 import { AuthService } from '../services/auth.service';
-
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-menu-leader',
@@ -17,6 +17,7 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./menu-leader.component.css']
 })
 export class MenuLeaderComponent implements OnInit {
+  refreshDataSubject: Subject<void> = new Subject<void>();
   constructor(
     private route: ActivatedRoute,
     private http: HttpClient,
@@ -30,7 +31,13 @@ export class MenuLeaderComponent implements OnInit {
 
   allStudents: Student[]= [] ;
   grades:Grade[]=[];
-  selectedStudent = new Student("Student20", "email20", false);
+  selectedStudent: Student | null = null;
+  selectedStudentSubject: Subject<Student | null> = new Subject<Student | null>();
+
+  showStudentData(student: Student) {
+    this.selectedStudent = student;
+    this.selectedStudentSubject.next(this.selectedStudent);
+  }
 
 
 
