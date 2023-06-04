@@ -83,4 +83,17 @@ public class GradeService {
         }
         return gradeDtos;
     }
+
+    public ArrayList<Long> getGradesFrequency(String email) {
+        Student leader = studentRepository.findByEmail(email);
+        ArrayList<Student> students = studentRepository.findByTeam(leader.getTeam());
+        ArrayList<Long> allGrades = new ArrayList<>();
+        for (Student student : students) {
+            ArrayList<Grade> studentGrade = gradeRepository.findByStudent(student);
+            for (Grade grade : studentGrade) {
+                allGrades.add(grade.getValue());
+            }
+        }
+        return allGrades;
+    }
 }

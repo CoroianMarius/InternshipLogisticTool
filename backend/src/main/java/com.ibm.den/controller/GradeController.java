@@ -25,7 +25,10 @@ public class GradeController {
     public ArrayList<ArrayList<GradeDto>> getGradesList(@PathVariable String email) {
         return gradeService.getGradesList(email);
     }
-    // POST /api/grade
+    @GetMapping("/frequency/{email}")
+    public ArrayList<Long> getGradesFrequency(@PathVariable String email) {
+        return gradeService.getGradesFrequency(email);
+    }
     @PostMapping("")
     //creates new grade
     public GradeDto createGrade(@RequestBody GradeDto grade) {
