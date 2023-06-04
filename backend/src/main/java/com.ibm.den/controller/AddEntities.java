@@ -23,4 +23,8 @@ public class AddEntities {
     public void makeDb(){
         populateDb.populateDb();
     }
+    @PostMapping("/addGrades")
+    public void addGrades(){
+        populateDb.addGrades();
+    }
 }

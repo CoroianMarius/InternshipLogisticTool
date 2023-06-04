@@ -229,4 +229,20 @@ public class PopulateDb {
 
 
     }
+
+    public void addGrades() {
+        ArrayList<Student> students = studentRepository.findAll();
+        ArrayList<Task> tasks = taskRepository.findAll();
+        ArrayList<Mentor> mentors = mentorRepository.findAll();
+
+        for (int i = 0; i < 10; i++) {
+            Grade grade = new Grade();
+            grade.setStudent(students.get(i));
+            grade.setTask(tasks.get(i%6));
+            grade.setMentor(mentors.get(i%2));
+            grade.setValue((long) i);
+            grade.setComment("Comment" + i);
+            gradeRepository.save(grade);
+        }
+    }
 }
