@@ -34,7 +34,8 @@ import { MenuLeaderComponent } from './menu-leader/menu-leader.component';
 import { DialogCreateComponent } from './dialog-create/dialog-create.component';
 import {MatSelectModule} from "@angular/material/select";
 import {ViewTeamService} from "./services/view-team.service";
-
+import {NgChartsModule } from 'ng2-charts';
+import { PieChartComponent } from './pie-chart/pie-chart.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +55,8 @@ import {ViewTeamService} from "./services/view-team.service";
     ViewAttendenceComponent,
     ViewGradesComponent,
     MenuLeaderComponent,
-    DialogCreateComponent
+    DialogCreateComponent,
+    PieChartComponent
   ],
     imports: [
         BrowserModule,
@@ -70,6 +72,7 @@ import {ViewTeamService} from "./services/view-team.service";
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
+      NgChartsModule,
 
         RouterModule.forRoot([
             {path: '', component: HomeComponent},

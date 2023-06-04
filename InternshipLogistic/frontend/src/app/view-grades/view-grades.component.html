@@ -1,8 +1,5 @@
 <h1>Here are your grades</h1>
-<mat-form-field>
-  <mat-label>Filter</mat-label>
-  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
-</mat-form-field>
+
 
 <ng-container *ngIf="grades.length > 1">
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">

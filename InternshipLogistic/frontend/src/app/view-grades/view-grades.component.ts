@@ -16,7 +16,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 })
 export class ViewGradesComponent implements OnInit {
 
-  selectedStudent = new Student("Student20", "email20", false);
+  selectedStudent = new Student("Student10", "email10", true);
   grades: Grade[] = [];
   dataSource: MatTableDataSource<Grade>;
 

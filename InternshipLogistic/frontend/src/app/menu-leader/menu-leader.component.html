@@ -3,7 +3,6 @@
 <main class="main">
   <div class="right">
     <div class="container" *ngFor="let student of allStudents">
-
       <div class="card">
         <div class="card-info">
           <div class="card-avatar"></div>
@@ -11,35 +10,27 @@
           <div class="card-subtitle">{{ student.email }}</div>
         </div>
       </div>
-
-
-
     </div>
     <div class="buttons">
-      <div *ngIf="allStudents.length <6">
-        <button mat-raised-button class="mybutton"color="primary">Add member</button>
+      <div *ngIf="allStudents.length < 6">
+        <button mat-raised-button class="mybutton" color="primary">Add member</button>
       </div>
       <div>
         <button mat-raised-button class="mybutton" color="primary">Delete member</button>
       </div>
     </div>
-
   </div>
-
-
 </main>
 <br>
-<br>
-<br>
+
+
 <div class="chosen">
-
-  <div class="todisplay"><app-view-attendence></app-view-attendence></div>
-
   <div class="todisplay">
-  <app-view-grades></app-view-grades>
+    <app-view-attendence></app-view-attendence>
+  </div>
+  <div class="todisplay">
+    <app-view-grades></app-view-grades>
   </div>
 </div>
 
-<div class="diagram">
 
-</div>
