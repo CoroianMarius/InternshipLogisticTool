@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+
 @Service
 public class LoginRegisterService {
 
@@ -27,35 +28,43 @@ public class LoginRegisterService {
     @Autowired
     private final MentorRepository mentorRepository;
 
-    public LoginRegisterService(TeamRepository teamRepository, StudentRepository studentRepository, ActivityRepository activityRepository, MentorRepository mentorRepository){
+    public LoginRegisterService(TeamRepository teamRepository, StudentRepository studentRepository, ActivityRepository activityRepository, MentorRepository mentorRepository) {
         this.teamRepository = teamRepository;
         this.studentRepository = studentRepository;
         this.activityRepository = activityRepository;
         this.mentorRepository = mentorRepository;
     }
-    public ArrayList<Activity> activities(){
+
+    public ArrayList<Activity> activities() {
         System.out.println("hola");
         return activityRepository.findAll();
 
     }
 
-    public LoginResponse login(LoginRequest a)
-    {
+    public LoginResponse login(LoginRequest a) {
+        LoginResponse response = new LoginResponse();
         Mentor m = mentorRepository.findByNameAndPassword(a.getEmail(), a.getPassword());
         Student s = studentRepository.findByEmailAndPassword(a.getEmail(), a.getPassword());
-        if(m!=null)
-            return LoginResponse.MENTOR;
-        else if(s!=null)
-            if (s.getLeader())
-                return LoginResponse.LEADER;
-            else
-                return LoginResponse.STUDENT;
-        else
-            return LoginResponse.NOT_FOUND;
+        if (m != null) {
+            response.setUserType(LoginResponse.UserType.MENTOR);
+            response.setEmail(m.getName());
+            return response;
+        } else if (s != null) {
+            response.setEmail(s.getEmail());
+            if (s.getLeader()) {
+                response.setUserType(LoginResponse.UserType.LEADER);
+            } else {
+                response.setUserType(LoginResponse.UserType.STUDENT);
+            }
+            return response;
+        } else {
+            response.setEmail("Not found");
+            response.setUserType(LoginResponse.UserType.NOT_FOUND);
+            return response;
+        }
     }
 
-    public void register(RegisterTeam a)
-    {
+    public void register(RegisterTeam a) {
         Team t = new Team();
 
         t.setActivity(activityRepository.findByName(a.getActivity()));
@@ -65,11 +74,10 @@ public class LoginRegisterService {
         Boolean first = true;
         for (String s : a.getMembers()) {
             Student st = new Student();
-            if(first){
+            if (first) {
                 first = false;
                 st.setLeader(true);
-            }
-            else {
+            } else {
                 st.setLeader(false);
             }
             st.setName(s);
