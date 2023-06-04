@@ -110,8 +110,10 @@
   display: flex;
   flex-wrap: wrap; /* Allow cards to wrap to the next line */
   justify-content: flex-start; /* Align cards to the left */
-  margin: 303px;
+  margin-left:303px;
+  margin-top:275px;
   padding: 0;
+  gap: 30px; /* Add some spacing between the cards */
 }
 
 .diagram {
@@ -134,4 +136,14 @@
 .mybutton
 {
  color: #0c1a83;
+}
+.todisplay
+{
+  width:30%;
+  display: flex;
+  justify-content: center; /* Horizontally center the child */
+  align-items: center; /* Vertically center the child */
+  margin:30px;
+
+
 }
