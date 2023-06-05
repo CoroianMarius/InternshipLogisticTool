@@ -9,7 +9,18 @@
   <ol>
     <li *ngFor="let student of allStudents">
       {{student.name}}
-      <button> View Attendance and grades </button>
+      <button (click)="selectedStudent(student)"> View Attendance and grades </button>
+
     </li>
+
   </ol>
+  <div class="chosen" *ngIf="selected">
+
+    <app-view-attendence [selectedStudent]="selectedStud" ></app-view-attendence>
+
+
+    <app-view-grades [selectedStudent]="selectedStud"></app-view-grades>
+
+
+  </div>
 </div>

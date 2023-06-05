@@ -12,7 +12,8 @@ import {ViewTeamService} from "../services/view-team.service";
 })
 export class ViewTeamComponent implements OnInit {
   allStudents: Student[]= [] ;
-
+  selectedStud!: Student;
+  selected!:boolean;
   selectedLeader?: Student;
   allLeaders: Student[] = [];
 
@@ -49,6 +50,11 @@ export class ViewTeamComponent implements OnInit {
         const studentObject=Team[1];
         this.allStudents=  Object.values(studentObject);
       })
+  }
+  selectedStudent(student:Student){
+    this.selectedStud = student;
+    this.selected=true;
+
   }
 
 
