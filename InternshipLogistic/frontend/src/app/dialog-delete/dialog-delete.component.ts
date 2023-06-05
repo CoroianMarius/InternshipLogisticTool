@@ -29,17 +29,19 @@ export class DialogDeleteComponent implements OnInit {
   constructor(private http: HttpClient, private authService: AuthService,private router: Router) {
     this.selectedLeader=this.authService.getLoggedInUser();
     this.sel=false;
+
   }
 
   deleteMemberFromTeam(student: Student) {
-    const studentEmail = student.email;
+
 
     // Send a DELETE request to delete the student from the server
-    this.http.delete(`http://localhost:8080/api/team/`+student.email)
+    this.http.delete(`http://localhost:8080/api/student/`+student.email)
       .subscribe(() => {
         // Update the member list or perform any necessary actions after deletion
-        this.fetchUpdatedMembers();
-        this.memberDeleted.emit(studentEmail);
+
+        this.memberDeleted.emit(student.email);
+        this.reload();
       });
   }
 
@@ -47,6 +49,7 @@ deleteMember(student:Student)
 {
   this.sel=true;
   this.todelete=student;
+  console.log(this.todelete);
 }
   fetchUpdatedMembers() {
     // Fetch the updated member list from the server
@@ -70,6 +73,7 @@ deleteMember(student:Student)
   }
   ngOnInit() {
     this.fetchUpdatedMembers();
+
   }
   reload()
 {

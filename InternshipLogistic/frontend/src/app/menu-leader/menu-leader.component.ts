@@ -103,6 +103,7 @@ export class MenuLeaderComponent implements OnInit {
   }
   handleMemberDeleted() {
     this.ViewTeam(this.selectedLeader);
+
   }
 
 
