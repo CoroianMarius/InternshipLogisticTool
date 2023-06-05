@@ -11,6 +11,8 @@ import {ViewGradesTeamService} from "../services/view-grades-team.service";
 import { AuthService } from '../services/auth.service';
 import { Subject } from 'rxjs';
 
+
+
 @Component({
   selector: 'app-menu-leader',
   templateUrl: './menu-leader.component.html',
@@ -23,7 +25,8 @@ export class MenuLeaderComponent implements OnInit {
     private http: HttpClient,
     private viewTeamService: ViewTeamService,
     private viewGradesTeamService: ViewGradesTeamService,
-    private authService: AuthService
+    private authService: AuthService,
+
   ) {
     this.selectedLeader=this.authService.getLoggedInUser();
   }
@@ -87,6 +90,5 @@ export class MenuLeaderComponent implements OnInit {
         console.log(filteredGrades);
       });
   }
-
 
 }

@@ -1,4 +1,9 @@
 <h1>Attendence history</h1>
+<mat-form-field>
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+</mat-form-field>
+
 
 <ng-container *ngIf="attendance.length > 1">
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">

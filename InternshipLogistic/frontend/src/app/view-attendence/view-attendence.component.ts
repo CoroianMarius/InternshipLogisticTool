@@ -57,6 +57,11 @@ export class ViewAttendenceComponent implements OnInit {
         console.log(filteredAttendance);
       });
   }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+    console.log((event.target as HTMLInputElement).value);
+  }
   ngOnDestroy() {
     this.refreshSubscription.unsubscribe();
   }
