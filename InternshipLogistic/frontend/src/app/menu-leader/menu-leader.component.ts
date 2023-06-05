@@ -25,7 +25,7 @@ export class MenuLeaderComponent implements OnInit {
     private http: HttpClient,
     private viewTeamService: ViewTeamService,
     private viewGradesTeamService: ViewGradesTeamService,
-    private authService: AuthService,
+    private authService: AuthService
 
   ) {
     this.selectedLeader=this.authService.getLoggedInUser();
@@ -33,12 +33,17 @@ export class MenuLeaderComponent implements OnInit {
 
 
   allStudents: Student[]= [] ;
+  showAddComponent: boolean = false;
+  showDeleteComponent: boolean = false;
+
   grades:Grade[]=[];
   selectedStudent: Student | null = null;
   selectedStudentSubject: Subject<Student | null> = new Subject<Student | null>();
 
   showStudentData(student: Student) {
     this.selectedStudent = student;
+    this.showAddComponent = false;
+    this.showDeleteComponent = false;
     this.selectedStudentSubject.next(this.selectedStudent);
   }
 
@@ -54,6 +59,7 @@ export class MenuLeaderComponent implements OnInit {
     });
     this.ViewTeam(this.selectedLeader);
     this.viewGrades();
+    this.authService.setLoggedInUser(this.selectedLeader);
   }
   ViewTeam(Leader:Student)
   {
@@ -90,5 +96,20 @@ export class MenuLeaderComponent implements OnInit {
         console.log(filteredGrades);
       });
   }
+  addMember() {
+    this.showAddComponent = true;
+    this.showDeleteComponent = false;
+  }
+
+  deleteMember() {
+    this.showAddComponent = false;
+    this.showDeleteComponent = true;
+  }
+  handleMemberDeleted() {
+    this.ViewTeam(this.selectedLeader);
+  }
+
+
+
 
 }

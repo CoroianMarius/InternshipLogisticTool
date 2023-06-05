@@ -38,6 +38,7 @@ import {NgChartsModule } from 'ng2-charts';
 
 import { PieChartComponent } from './pie-chart/pie-chart.component';
 import { DialogAddComponent } from './dialog-add/dialog-add.component';
+import { DialogDeleteComponent } from './dialog-delete/dialog-delete.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,7 +60,8 @@ import { DialogAddComponent } from './dialog-add/dialog-add.component';
     MenuLeaderComponent,
     DialogCreateComponent,
     PieChartComponent,
-    DialogAddComponent
+    DialogAddComponent,
+    DialogDeleteComponent
   ],
 
     imports: [

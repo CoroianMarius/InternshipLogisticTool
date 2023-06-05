@@ -1,0 +1,9 @@
+<div *ngFor="let student of allStudents">
+  <div class="card" (click)="deleteMemberFromTeam(student)">
+    <div class="card-info">
+      <div class="card-avatar"></div>
+      <div class="card-title">{{ student.name }}</div>
+      <div class="card-subtitle">{{ student.email }}</div>
+    </div>
+  </div>
+</div>

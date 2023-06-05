@@ -13,26 +13,33 @@
     </div>
     <div class="buttons">
       <div *ngIf="allStudents.length < 6">
-        <button mat-raised-button class="mybutton" color="primary">Add member</button>
+        <button mat-raised-button class="mybutton" (click)="addMember()" color="primary">Add member</button>
       </div>
       <div>
-        <button mat-raised-button class="mybutton" color="primary">Delete member</button>
+        <button mat-raised-button class="mybutton" (click)="deleteMember()" color="primary">Delete member</button>
       </div>
     </div>
   </div>
 </main>
 <br>
 
-
 <div class="chosen">
-  <div class="todisplay">
-    <app-view-attendence *ngIf="selectedStudent" [selectedStudent]="selectedStudent"></app-view-attendence>
+  <div class="todisplay" *ngIf="showAddComponent">
+    <app-dialog-add></app-dialog-add>
+  </div>
+  <div class="todisplay" *ngIf="showDeleteComponent">
+    <app-dialog-delete *ngIf="showDeleteComponent"
+
+                       (memberDeleted)="handleMemberDeleted()">
+    </app-dialog-delete>
 
   </div>
-  <div class="todisplay">
-    <app-view-grades *ngIf="selectedStudent" [selectedStudent]="selectedStudent"></app-view-grades>
+  <div class="todisplay" *ngIf="selectedStudent && !showAddComponent && !showDeleteComponent">
+    <app-view-attendence [selectedStudent]="selectedStudent"></app-view-attendence>
+  </div>
+  <div class="todisplay" *ngIf="selectedStudent && !showAddComponent && !showDeleteComponent">
+    <app-view-grades [selectedStudent]="selectedStudent"></app-view-grades>
   </div>
 </div>
-
 
 
