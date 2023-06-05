@@ -3,7 +3,7 @@
     <div class="container">
       <ng-container *ngFor="let proj of projects">
         <div class="card">
-          <span>{{proj.name}}</span>
+          <span>{{proj}}</span>
         </div>
       </ng-container>
 
@@ -13,5 +13,18 @@
       <mat-icon>add</mat-icon>
     </button>
   </div>
+
+  <form (ngSubmit)="submitForm()" *ngIf="addingActivity==true">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" [(ngModel)]="formData.name">
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" [(ngModel)]="formData.email">
+
+    <button type="submit">Submit</button>
+  </form>
+
+
+
 </main>
 
