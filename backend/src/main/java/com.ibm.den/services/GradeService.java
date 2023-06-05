@@ -1,10 +1,7 @@
 package com.ibm.den.services;
 
 import com.ibm.den.dto.GradeDto;
-import com.ibm.den.entities.Grade;
-import com.ibm.den.entities.Mentor;
-import com.ibm.den.entities.Student;
-import com.ibm.den.entities.Task;
+import com.ibm.den.entities.*;
 import com.ibm.den.repository.*;
 import org.springframework.stereotype.Service;
 
@@ -16,12 +13,15 @@ public class GradeService {
     private final StudentRepository studentRepository;
     private final MentorRepository mentorRepository;
     private final TaskRepository taskRepository;
-    public GradeService(GradeRepository gradeRepository, StudentRepository studentRepository, MentorRepository mentorRepository, TaskRepository taskRepository)
+    private final AttendanceRepository attendanceRepository;
+    public GradeService(AttendanceRepository attendanceRepository,GradeRepository gradeRepository, StudentRepository studentRepository, MentorRepository mentorRepository, TaskRepository taskRepository)
     {
         this.gradeRepository=gradeRepository;
         this.studentRepository=studentRepository;
         this.mentorRepository=mentorRepository;
         this.taskRepository=taskRepository;
+        this.attendanceRepository=attendanceRepository;
+
     }
 
 
@@ -95,5 +95,25 @@ public class GradeService {
             }
         }
         return allGrades;
+    }
+
+    public ArrayList<String> getUngraded(String email) {
+        Student student = studentRepository.findByEmail(email);
+        ArrayList<Attendance> attendances = attendanceRepository.findByStudent(student);
+        ArrayList<Grade> grades = gradeRepository.findByStudent(student);
+
+        ArrayList<String> ungraded = new ArrayList<>();
+        for (Attendance attendance : attendances) {
+            boolean isGraded = false;
+            for (Grade grade : grades) {
+                if (grade.getTask().getName().equals(attendance.getTask().getName())) {
+                    isGraded = true;
+                }
+            }
+            if (!isGraded) {
+                ungraded.add(attendance.getTask().getName());
+            }
+        }
+        return ungraded;
     }
 }

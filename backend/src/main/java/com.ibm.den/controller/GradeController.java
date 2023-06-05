@@ -29,6 +29,11 @@ public class GradeController {
     public ArrayList<Long> getGradesFrequency(@PathVariable String email) {
         return gradeService.getGradesFrequency(email);
     }
+    @GetMapping("/ungraded/{email}")
+    public ArrayList<String> getUngraded(@PathVariable String email) {
+        return gradeService.getUngraded(email);
+    }
+
     @PostMapping("")
     //creates new grade
     public GradeDto createGrade(@RequestBody GradeDto grade) {
