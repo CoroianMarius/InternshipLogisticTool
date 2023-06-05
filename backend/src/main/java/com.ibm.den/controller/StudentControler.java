@@ -31,8 +31,8 @@ public class  StudentControler {
 
     @PostMapping("/{emailLeader}/{password}")
     //creates new student, you pass the email of his team leader
-    public StudentDto createStudent(@RequestBody StudentDto student,@PathVariable String emailLeader,@PathVariable String password) {
-        return studentService.createStudent(student,emailLeader,password);
+    public StudentDto createStudent(@RequestBody StudentDto studentDto, @PathVariable String emailLeader, @PathVariable String password) {
+        return studentService.createStudent(studentDto, emailLeader, password);
     }
 
     @DeleteMapping("/{emailStudent}")
