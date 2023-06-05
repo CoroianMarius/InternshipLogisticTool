@@ -8,7 +8,7 @@ public class Grade extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
-    private long id;
+    private Long id;
     @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn()
     private Mentor mentor;
@@ -42,7 +42,7 @@ public class Grade extends BaseEntity{
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

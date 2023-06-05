@@ -12,7 +12,7 @@ public class Activity extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
-    private long id;
+    private Long id;
 
     @Column
     private String name;
@@ -39,7 +39,7 @@ public class Activity extends BaseEntity{
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
