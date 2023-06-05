@@ -27,15 +27,15 @@
   <div class="todisplay" *ngIf="showAddComponent">
     <app-dialog-add></app-dialog-add>
   </div>
-  <div class="todisplay" *ngIf="showDeleteComponent">
-    <app-dialog-delete *ngIf="showDeleteComponent"
+  <div *ngIf="showDeleteComponent">
+    <app-dialog-delete class="delete" *ngIf="showDeleteComponent"
 
                        (memberDeleted)="handleMemberDeleted()">
     </app-dialog-delete>
 
   </div>
-  <div class="todisplay" *ngIf="selectedStudent && !showAddComponent && !showDeleteComponent">
-    <app-view-attendence [selectedStudent]="selectedStudent"></app-view-attendence>
+  <div  *ngIf="selectedStudent && !showAddComponent && !showDeleteComponent">
+    <app-view-attendence  class="todisplay" [selectedStudent]="selectedStudent"></app-view-attendence>
   </div>
   <div class="todisplay" *ngIf="selectedStudent && !showAddComponent && !showDeleteComponent">
     <app-view-grades [selectedStudent]="selectedStudent"></app-view-grades>

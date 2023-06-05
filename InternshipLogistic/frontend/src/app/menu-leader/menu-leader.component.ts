@@ -11,7 +11,7 @@ import {ViewGradesTeamService} from "../services/view-grades-team.service";
 import { AuthService } from '../services/auth.service';
 import { Subject } from 'rxjs';
 
-
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-menu-leader',
@@ -52,11 +52,7 @@ export class MenuLeaderComponent implements OnInit {
   selectedLeader:Student;
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      const userName = params['name'];
-      const userEmail = params['email'];
-      // Use the user's name and email as needed
-    });
+
     this.ViewTeam(this.selectedLeader);
     this.viewGrades();
     this.authService.setLoggedInUser(this.selectedLeader);

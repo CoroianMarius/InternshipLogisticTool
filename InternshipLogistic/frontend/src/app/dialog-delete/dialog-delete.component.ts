@@ -1,4 +1,4 @@
-import { ActivatedRoute, Params } from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit,Output,EventEmitter } from '@angular/core';
 import { map } from 'rxjs/operators';
@@ -20,16 +20,22 @@ export class DialogDeleteComponent implements OnInit {
   @Output() memberDeleted: EventEmitter<string> = new EventEmitter<string>();
   allStudents: Student[] = [];
   selectedLeader:Student;
+  sel!:boolean;
+  goBack!:boolean;
 
-  constructor(private http: HttpClient, private authService: AuthService) {
+
+  todelete!:Student;
+
+  constructor(private http: HttpClient, private authService: AuthService,private router: Router) {
     this.selectedLeader=this.authService.getLoggedInUser();
+    this.sel=false;
   }
 
   deleteMemberFromTeam(student: Student) {
     const studentEmail = student.email;
 
     // Send a DELETE request to delete the student from the server
-    this.http.delete(`http://localhost:8080/api/team/${studentEmail}`)
+    this.http.delete(`http://localhost:8080/api/team/`+student.email)
       .subscribe(() => {
         // Update the member list or perform any necessary actions after deletion
         this.fetchUpdatedMembers();
@@ -37,7 +43,11 @@ export class DialogDeleteComponent implements OnInit {
       });
   }
 
-
+deleteMember(student:Student)
+{
+  this.sel=true;
+  this.todelete=student;
+}
   fetchUpdatedMembers() {
     // Fetch the updated member list from the server
     this.http.get<any>('http://localhost:8080/api/team/' +this.selectedLeader.email)
@@ -61,5 +71,12 @@ export class DialogDeleteComponent implements OnInit {
   ngOnInit() {
     this.fetchUpdatedMembers();
   }
+  reload()
+{
+  this.authService.setLoggedInUser(this.selectedLeader);
+  this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+    this.router.navigate(['/leader']);
+  });
+}
 
 }
