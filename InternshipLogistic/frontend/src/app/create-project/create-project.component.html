@@ -1,5 +1,5 @@
-<main class="main">
-  <div class="right">
+
+
     <div class="container">
       <ng-container *ngFor="let proj of projects">
         <div class="card">
@@ -12,19 +12,20 @@
     <button mat-icon-button id="mybutton" (click)="addProject()">
       <mat-icon>add</mat-icon>
     </button>
+
+
+  <br>
+<div class="co" *ngIf="addingActivity==true">
+  <div class="login-card">
+    <div class="card-header">
+      <div class="log">Create Activity</div>
+    </div>
+
+    <form (ngSubmit)="submitForm()" >
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" [(ngModel)]="formData.name">
+
+      <button mat-raised-button color="primary" type="submit" >Submit</button>
+    </form>
   </div>
-
-  <form (ngSubmit)="submitForm()" *ngIf="addingActivity==true">
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" [(ngModel)]="formData.name">
-
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" [(ngModel)]="formData.email">
-
-    <button type="submit">Submit</button>
-  </form>
-
-
-
-</main>
-
+</div>

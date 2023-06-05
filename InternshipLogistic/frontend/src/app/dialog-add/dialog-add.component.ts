@@ -31,7 +31,7 @@ export class DialogAddComponent implements OnInit{
       this.http.post<any>('http://localhost:8080/api/student/'+this.selectedLeader.email+'/'+password1, { name:name,email:email,leader:false })
         .subscribe((response) => {
           console.log(response);
-          this.reload();
+
         });
 
     }
