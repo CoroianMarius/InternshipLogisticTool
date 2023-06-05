@@ -24,6 +24,11 @@ public class ActivityController {
         return activityService.getNames();
     }
 
+    @GetMapping("/getActivity/{name}")
+    public ActivityDto getActivity(@PathVariable String name){
+        return activityService.getActivity(name);
+    }
+
     @PostMapping("")                //creates new activity
     public ActivityDto createActivity(@RequestBody ActivityDto activity){
         return activityService.createActivity(activity);

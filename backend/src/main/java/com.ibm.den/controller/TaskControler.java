@@ -17,6 +17,11 @@ public class TaskControler {
         this.taskService = taskService;
     }
 
+    @GetMapping("/getTasks/{ActivityName}")
+    public ArrayList<TaskDto> getTasks(@PathVariable String ActivityName) {
+        return taskService.getTasks(ActivityName);
+    }
+
     @PostMapping("/{ActivityName}")
     //Creates a new task. Remember to send the activity name in the path
     public TaskDto createTask(@RequestBody TaskDto task, @PathVariable String ActivityName) {

@@ -15,6 +15,10 @@ public class Task extends BaseEntity {
     @Column
     private String description;
 
+    @ManyToOne
+    @JoinColumn(name = "activity_id")
+    private Activity activity;
+
     public Task() {
     }
 

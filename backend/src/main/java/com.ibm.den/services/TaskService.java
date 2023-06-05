@@ -52,4 +52,13 @@ public class TaskService {
     public void deleteTask(Long id) {
         taskRepository.deleteById(id);
     }
+
+    public ArrayList<TaskDto> getTasks(String activityName) {
+        ArrayList<Task> tasks = taskRepository.findByActivity(activityRepository.findByName(activityName));
+        ArrayList<TaskDto> taskDtos = new ArrayList<>();
+        for (Task task : tasks) {
+            taskDtos.add(new TaskDto(task));
+        }
+        return taskDtos;
+    }
 }
