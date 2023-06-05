@@ -11,7 +11,7 @@ public class Attendance extends BaseEntity{
     private Long id;
     @Column
     private Boolean present;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn
     private Student student;
     @OneToOne

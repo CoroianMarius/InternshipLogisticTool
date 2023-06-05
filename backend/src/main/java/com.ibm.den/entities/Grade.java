@@ -9,7 +9,7 @@ public class Grade extends BaseEntity{
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
     private long id;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn()
     private Mentor mentor;
 
@@ -17,7 +17,7 @@ public class Grade extends BaseEntity{
     @JoinColumn()
     private Student student;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn()
     private Task task;
     @Column

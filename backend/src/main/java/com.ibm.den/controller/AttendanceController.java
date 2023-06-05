@@ -2,6 +2,7 @@ package com.ibm.den.controller;
 
 import com.ibm.den.dto.AttendanceDto;
 import com.ibm.den.services.AttendanceService;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -33,5 +34,11 @@ public class AttendanceController {
     //creates an attendance for a specific student. use TaskService.addTask()
     public AttendanceDto createAttendance(@PathVariable String studentEmail, @PathVariable String taskName){
         return attendanceService.createAttendance(studentEmail, taskName);
+    }
+
+    @PatchMapping("/{studentEmail}/{taskName}")
+    public HttpStatusCode updateAttendance(@PathVariable String studentEmail, @PathVariable String taskName){
+        attendanceService.updateAttendance(studentEmail, taskName);
+        return HttpStatusCode.valueOf(200);
     }
 }

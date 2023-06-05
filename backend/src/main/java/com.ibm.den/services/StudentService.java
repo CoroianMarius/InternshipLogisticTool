@@ -1,21 +1,46 @@
 package com.ibm.den.services;
 
 import com.ibm.den.dto.StudentDto;
+import com.ibm.den.entities.Attendance;
+import com.ibm.den.entities.Grade;
 import com.ibm.den.entities.Student;
+import com.ibm.den.repository.AttendanceRepository;
+import com.ibm.den.repository.GradeRepository;
 import com.ibm.den.repository.StudentRepository;
+import com.ibm.den.repository.TaskRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 @Service
 public class StudentService {
 
+    @Autowired
     private final StudentRepository studentRepository;
 
-    public StudentService(StudentRepository studentRepository) {
+    @Autowired
+    private final GradeRepository gradeRepository;
+
+    @Autowired
+    private final AttendanceRepository attendanceRepository;
+
+    public StudentService(StudentRepository studentRepository,GradeRepository gradeRepository,AttendanceRepository attendanceRepository) {
         this.studentRepository = studentRepository;
+        this.gradeRepository = gradeRepository;
+        this.attendanceRepository = attendanceRepository;
     }
     public void deleteStudent(String email) {
         Student s = studentRepository.findByEmail(email);
+        ArrayList<Attendance> attendances = attendanceRepository.findByStudent(s);
+        ArrayList<Grade> grades = gradeRepository.findByStudent(s);
+
+        for(Attendance attendance:attendances) {
+            attendanceRepository.delete(attendance);
+        }
+
+        for(Grade grade:grades) {
+            gradeRepository.delete(grade);
+        }
         studentRepository.delete(s);
     }
 
