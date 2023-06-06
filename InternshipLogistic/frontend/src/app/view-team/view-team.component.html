@@ -1,7 +1,7 @@
 <h2>Team Leaders</h2>
 
-<div *ngFor="let Leader of allLeaders">
-  <button (click)="onSelectLeader(Leader)">{{Leader.name}}</button>
+<div *ngFor="let leader of allLeaders">
+  <button mat-raised-button color="primary" (click)="onSelectLeader(leader)" class="name-button">{{leader.name}}</button>
 </div>
 
 <div *ngIf="selectedLeader">
@@ -9,58 +9,54 @@
   <ol>
     <li *ngFor="let student of allStudents">
       {{student.name}}
-      <button (click)="selectedStudent(student)"> View Attendance and grades</button>
-
+      <button mat-raised-button color="primary" (click)="selectedStudent(student)">View Attendance and Grades</button>
     </li>
-
   </ol>
-  <div class="chosen" *ngIf="selected">
-
+  <div class="chosen" *ngIf="selected === true">
     <app-view-attendence [selectedStudent]="selectedStud"></app-view-attendence>
-
-
     <app-view-grades [selectedStudent]="selectedStud"></app-view-grades>
 
-    <button (click)="onGrading()">Grading</button>
-    <button (click)="onAttendance()">Update Attendance</button>
-      <div *ngIf="selectedGrading" >
-        <form #myform="ngForm" (submit)="SubmitForm(myform)">
-          <div class="form-group">
-            <label for="username">Task:</label>
-            <input required="" name="username" id="username" type="text" ngModel>
-          </div>
-          <div class="form-group">
-            <label for="password">Grade:</label>
-            <input required="" name="password" id="password" type="password" ngModel>
-          </div>
+    <div class="button-container">
+      <button mat-raised-button color="primary" (click)="onGrading()">Grading</button>
+
+    </div>
+
+    <div *ngIf="selectedGrading" class="form-container">
+      <form #myform="ngForm" (submit)="SubmitForm(myform)">
+        <div class="form-group">
+          <label for="task">Task:</label>
+          <input required name="task" id="task" type="task" [(ngModel)]="formData.task">
+        </div>
+        <div class="form-group">
+          <label for="grade">Grade:</label>
+          <input required name="grade" id="grade" type="grade" [(ngModel)]="formData.grade">
+        </div>
+        <div class="form-group">
           <label for="comment">Comment:</label>
-          <input required="" name="comment" id="comment" type="comment" ngModel>
-          <div class="form-group">
-            <input value="Give Grade" type="submit">
-          </div>
-        </form>
+          <input required name="comment" id="comment" type="comment" [(ngModel)]="formData.comment">
+        </div>
+        <div class="form-group">
+          <button mat-raised-button color="primary" type="submit">Give Grade</button>
+        </div>
+      </form>
+    </div>
 
+    <div *ngIf="selectedAttendance" class="form-container">
+      <form #myform2="ngForm"(ngSubmit)="SubmitForm1(myform2)">
 
+        <div class="form-group">
+          <label for="nameTask">Task:</label>
+          <input required name="nameTask" id="nameTask" type="nameTask" [(ngModel)]="formData.nameTask">
+        </div>
+        <div class="form-group">
+          <label for="att">Attendence:</label>
+          <input required name="att" id="att" type="att" [(ngModel)]="formData.att">
+        </div>
 
-      </div>
-      <div *ngIf="selectedAttendance">
-        <form class="form" (ngSubmit)="SubmitForm1">
-          <div class="title">Contact us</div>
-          <select id="myComboBox1" name="myComboBox" >
-            <option *ngFor="let option of options" [(ngModel)]="formData.task">{{option}}</option>
-
-          </select>
-
-          <select id="myComboBox2" name="myComboBox" [(ngModel)]="formData.presence" >
-            <option>Present</option>
-            <option>Absent</option>
-
-          </select>
-
-
-          <button>Submit</button>
-        </form>
-      </div>
-
+        <div class="form-group">
+          <button mat-raised-button color="primary" type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>

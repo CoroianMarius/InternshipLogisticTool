@@ -32,7 +32,7 @@
 
 <div class="reg">
   <h1>Register your team!</h1>
-  <form>
+  <form #myform2="ngForm"(ngSubmit)="SubmitForm(myform2)">
     <mat-form-field id="name">
       <input matInput placeholder="Name" required>
     </mat-form-field>
@@ -41,24 +41,39 @@
       <input matInput type="email" placeholder="Email" required>
     </mat-form-field>
     <br> <!-- add a line break here -->
-
-
-    <div class="file-input-container">
-      <input class="ng-hide" id="input-file-id" multiple type="file"/>
-    </div>
-
-
-    <br>
+    <mat-form-field id="password">
+      <input matInput type="password" placeholder="Password" required>
+    </mat-form-field>
     <br>
 
-
-    <button mat-raised-button class="files">
-
-      <span>SUBMIT</span>
-
+    <button mat-raised-button class="files" (click)="showActivity()">
+      Choose Activity
     </button>
+
+
+    <br>
+    <br>
+    <ng-container *ngIf="selected===true">
+      <ng-container *ngFor="let activ of activities">
+        <p>{{activ}}</p>
+      </ng-container>
+      <br> <!-- add a line break here -->
+      <mat-form-field id="activity">
+        <input matInput type="activity" placeholder="Activity" required>
+      </mat-form-field>
+      <br>
+
+    </ng-container>
+<br>
+
+    <button mat-raised-button class="files"  type="submit">
+   Submit
+   </button>
+
+
 
 
   </form>
 
 </div>
+

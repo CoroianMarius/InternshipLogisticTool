@@ -11,14 +11,17 @@ export class MenuMentorComponent {
   showFiller = false;
   selectedComponent: string = '';
   logedin?:string;
-selectedMentor:Student;
+
   showComponent(componentName: string) {
     this.selectedComponent = componentName;
+    this.authService.setLoggedInUser(this.selectedMentor);
   }
   constructor(private route: ActivatedRoute,private authService: AuthService) {
     this.selectedMentor=this.authService.getLoggedInUser();
     console.log(this.selectedMentor);
+
   }
+  selectedMentor:Student;
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
@@ -27,5 +30,7 @@ selectedMentor:Student;
       this.logedin=userName;
       // Use the user's name and email as needed
     });
+    this.authService.setLoggedInUser(this.selectedMentor);
+    console.log(this.selectedMentor);
   }
 }

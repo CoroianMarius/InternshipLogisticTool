@@ -6,6 +6,7 @@ import {Team} from "../model/Team";
 import {ViewTeamService} from "../services/view-team.service";
 import { AuthService } from '../services/auth.service';
 import { NgForm } from "@angular/forms";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -17,6 +18,7 @@ export class ViewTeamComponent implements OnInit {
   allStudents: Student[]= [] ;
   selectedStud!: Student;
   selected!:boolean;
+  opt!:number;
   selectedGrading!: boolean;
   selectedAttendance!: boolean;
   selectedLeader?: Student;
@@ -25,15 +27,19 @@ export class ViewTeamComponent implements OnInit {
   formData: any;
   selectedMentor:Student;
 
-  constructor(private http: HttpClient, private ViewTeamService: ViewTeamService,private authService: AuthService) {
+  constructor(private http: HttpClient, private ViewTeamService: ViewTeamService,private authService: AuthService,private router: Router) {
     this.selectedMentor=this.authService.getLoggedInUser();
     console.log(this.selectedMentor);
+
   }
 
   ngOnInit() {
     this.ViewTeamLeaders();
     this.authService.setLoggedInUser(this.selectedMentor);
-    this.TaskOptions();
+    console.log(this.selectedMentor);
+    this.opt=0;
+
+
   }
 
   private ViewTeamLeaders(){
@@ -74,21 +80,41 @@ export class ViewTeamComponent implements OnInit {
   onAttendance(){
     this.selectedAttendance=true;
   }
-  TaskOptions(){
-    this.http.get<any>('http://localhost:8080/api/grade/ungraded/' + this.selectedStud.email).subscribe(((res)=>{
-      this.options = res;
-      console.log(this.options);
-    }))
-  }
+
   SubmitForm(form: NgForm){
     const TaskName = form.value.task;
+    console.log(form.value.task);
     const Grade = form.value.grade;
     const Comment = form.value.comment;
-    this.http.post('http://localhost:8080/api/grade', {task: TaskName, grade: Grade, comment: Comment, mentor: this.selectedMentor.name, emailStudent: this.selectedStud.email}).subscribe((res)=>{
+    this.http.post('http://localhost:8080/api/grade', {task: TaskName, grade: Grade, comment: Comment, mentor: this.selectedMentor.email, email: this.selectedStud.email})
+      .subscribe((res)=>{
       console.log(res);
-    })
+      this.reload();
+    });
   }
-  SubmitForm1(){
+
+  reload()
+  {
+    this.authService.setLoggedInUser(this.selectedMentor);
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/mentor']);
+    });
+  }
+  SubmitForm1(form: NgForm){
+
+
+    const Task=form.value.taskName;
+    const Att=form.value.att;
+    if(Att==="present")
+      this.opt=1;
+    this.http.patch('http://localhost:8080/api/attendance/'+this.selectedStud.email+'/'+Task+'/'+this.opt,{})
+      .subscribe((res)=>{
+        console.log(res);
+        this.reload();
+      });
+
+
+
 
   }
 

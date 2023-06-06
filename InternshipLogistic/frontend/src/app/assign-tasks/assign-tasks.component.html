@@ -1,7 +1,7 @@
 <main class="myform">
   <h1>Assign a task</h1>
 
-  <form form #myform="ngForm" class="example-form" (submit)="addTask(myform)">
+  <form form #myform="ngForm" class="example-form" (ngSubmit)="addTask(myform)">
     <table class="example-full-width" cellspacing="0">
       <tr>
         <td>
