@@ -9,18 +9,58 @@
   <ol>
     <li *ngFor="let student of allStudents">
       {{student.name}}
-      <button (click)="selectedStudent(student)"> View Attendance and grades </button>
+      <button (click)="selectedStudent(student)"> View Attendance and grades</button>
 
     </li>
 
   </ol>
   <div class="chosen" *ngIf="selected">
 
-    <app-view-attendence [selectedStudent]="selectedStud" ></app-view-attendence>
+    <app-view-attendence [selectedStudent]="selectedStud"></app-view-attendence>
 
 
     <app-view-grades [selectedStudent]="selectedStud"></app-view-grades>
 
+    <button (click)="onGrading()">Grading</button>
+    <button (click)="onAttendance()">Update Attendance</button>
+      <div *ngIf="selectedGrading" >
+        <form #myform="ngForm" (submit)="SubmitForm(myform)">
+          <div class="form-group">
+            <label for="username">Task:</label>
+            <input required="" name="username" id="username" type="text" ngModel>
+          </div>
+          <div class="form-group">
+            <label for="password">Grade:</label>
+            <input required="" name="password" id="password" type="password" ngModel>
+          </div>
+          <label for="comment">Comment:</label>
+          <input required="" name="comment" id="comment" type="comment" ngModel>
+          <div class="form-group">
+            <input value="Give Grade" type="submit">
+          </div>
+        </form>
+
+
+
+      </div>
+      <div *ngIf="selectedAttendance">
+        <form class="form" (ngSubmit)="SubmitForm1">
+          <div class="title">Contact us</div>
+          <select id="myComboBox1" name="myComboBox" >
+            <option *ngFor="let option of options" [(ngModel)]="formData.task">{{option}}</option>
+
+          </select>
+
+          <select id="myComboBox2" name="myComboBox" [(ngModel)]="formData.presence" >
+            <option>Present</option>
+            <option>Absent</option>
+
+          </select>
+
+
+          <button>Submit</button>
+        </form>
+      </div>
 
   </div>
 </div>
