@@ -37,6 +37,8 @@
   <div  *ngIf="selectedStudent && !showAddComponent && !showDeleteComponent">
     <app-view-attendence  class="todisplay" [selectedStudent]="selectedStudent"></app-view-attendence>
   </div>
+  <br>
+  <br>
   <div class="todisplay" *ngIf="selectedStudent && !showAddComponent && !showDeleteComponent">
     <app-view-grades [selectedStudent]="selectedStudent"></app-view-grades>
   </div>
