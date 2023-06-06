@@ -108,8 +108,9 @@
 .chosen {
   height: 100%;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
+  flex-direction: column; /* Display divs in a column */
+  align-items: center; /* Horizontally center the child */
+  justify-content: flex-start; /* Align divs to the top */
   margin-left: 350px;
   margin-top: 350px; /* Adjust this value to decrease the space */
   padding: 0;
@@ -145,10 +146,7 @@
 .todisplay
 {
   width:100%;
-  display: flex;
-  justify-content: center; /* Horizontally center the child */
-  align-items: center; /* Vertically center the child */
-  margin:80px;
+
 
 
 }
