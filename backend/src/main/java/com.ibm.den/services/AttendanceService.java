@@ -61,11 +61,15 @@ public class AttendanceService {
         return new AttendanceDto(attendance);
     }
 
-    public void updateAttendance(String studentEmail, String taskName) {
+    public void updateAttendance(String studentEmail, String taskName,int status) {
         Student student = studentRepository.findByEmail(studentEmail);                          //find the student
         Task task = taskRepository.findByName(taskName);                                        //find the task
         Attendance attendance = attendanceRepository.findByStudentAndTask(student, task);       //find the attendance
-        attendance.setPresent(true);
+        if (status == 1){
+            attendance.setPresent(true);}
+        else{
+            attendance.setPresent(false);
+        }
         attendanceRepository.save(attendance);
     }
 }
