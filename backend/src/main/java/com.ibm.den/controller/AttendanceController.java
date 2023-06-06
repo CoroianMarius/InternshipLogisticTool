@@ -38,7 +38,7 @@ public class AttendanceController {
 
     @PatchMapping("/{studentEmail}/{taskName}/{status}")
     public HttpStatusCode updateAttendance(@PathVariable String studentEmail, @PathVariable String taskName, @PathVariable int status){
-        attendanceService.updateAttendance(studentEmail, taskName);
+        attendanceService.updateAttendance(studentEmail, taskName, status);
         return HttpStatusCode.valueOf(200);
     }
 }
