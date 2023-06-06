@@ -41,6 +41,9 @@ public class GradeService {
         Task task = taskRepository.findByName(gradeDto.getTask());
         Student student = studentRepository.findByEmail(gradeDto.getEmail());
         Mentor mentor = mentorRepository.findByName(gradeDto.getMentor());
+        Attendance attendance = attendanceRepository.findByStudentAndTask(student, task);
+        attendance.setPresent(true);
+        attendanceRepository.save(attendance);
         grade.setTask(task);
         grade.setStudent(student);
         grade.setMentor(mentor);
