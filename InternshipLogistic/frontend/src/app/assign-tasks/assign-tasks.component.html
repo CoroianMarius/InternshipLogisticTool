@@ -1,53 +1,43 @@
 <main class="myform">
   <h1>Assign a task</h1>
 
-  <form class="example-form">
+  <form form #myform="ngForm" class="example-form" (submit)="addTask(myform)">
     <table class="example-full-width" cellspacing="0">
       <tr>
         <td>
           <mat-form-field class="example-full-width">
             <mat-label>Task name</mat-label>
-            <input matInput>
+            <input matInput name="taskName">
           </mat-form-field>
         </td>
         <td>
           <mat-form-field>
             <mat-label>Team Leader</mat-label>
-            <mat-select [(ngModel)]="selectedValue" name="food">
-              <mat-option *ngFor="let food of foods" [value]="food.value">
-                {{food.viewValue}}
+            <mat-select [(ngModel)]="selectedValue" (selectionChange)="onSelectLeader($event.value)" name="leader">
+              <mat-option *ngFor="let leader of allLeaders" [value]="leader">
+                {{leader.name}}
               </mat-option>
             </mat-select>
           </mat-form-field>
-
-
         </td>
       </tr>
     </table>
     <div>
       <mat-form-field>
-        <mat-label>Toppings</mat-label>
-        <mat-select [formControl]="toppings" multiple>
-          <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+        <mat-label>Students</mat-label>
+        <mat-select [formControl]="selectedStudents" multiple name="students">
+          <mat-option *ngFor="let student of allStudents" [value]="student.email">{{student.email}}</mat-option>
         </mat-select>
-      </mat-form-field>
 
+      </mat-form-field>
     </div>
     <table>
       <tr>
-        <td>
-          <mat-form-field class="example-full-width">
-            <mat-label>Leave a comment</mat-label>
-            <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
-          </mat-form-field>
-        </td>
         <td></td>
         <td>
-          <button id="mybutton" mat-flat-button>Assign task</button>
+          <button id="mybutton" mat-flat-button type="submit">Assign task</button>
         </td>
-
       </tr>
     </table>
-
   </form>
 </main>
